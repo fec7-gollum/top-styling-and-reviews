@@ -44,7 +44,7 @@ while (reviews <= 10000) {
   reviewData.push(`
 {
   "reviewID": ${reviews},
-  "stars": ${Math.ceil(Math.random() * (5 - 0) + 0)},
+  "stars": ${faker.random.number({ min: 1, max: 5 )},
   "text": "${faker.lorem.paragraph()}",
   "user": {
     "userID": ${reviews},
