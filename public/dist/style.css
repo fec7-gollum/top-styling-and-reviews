@@ -1,0 +1,145 @@
+.topRow {
+  padding-top: 1vh;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 1vh;
+  border-bottom: 1px rgb(184, 184, 184) solid;
+  position: fixed;
+  width:100vw;
+  height: 4vh;
+  margin-top: -1vh;
+  background-color: white;
+}
+
+.topIcons {
+  height: 3vh;
+  margin-right: 2vw;
+  margin-left: 2vw;
+}
+
+.foodie {
+  justify-self: center;
+  font-size: 1.4rem;
+  font-family: 'Josefin Sans', sans-serif;
+  padding-top: .75vh;
+}
+
+.right {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.right a {
+  text-decoration: none;
+  padding-top: .75vh;
+}
+
+.right a:hover {
+  text-decoration: underline;
+}
+
+.recipes {
+  justify-self: right;
+  font-size: .8rem;
+  color: rgb(150, 150, 150);
+}
+
+.login {
+  margin-left: 2vw;
+  font-size: .8rem;
+  font-weight: 600;
+  color: rgb(46, 46, 46);
+}
+
+.search {
+  justify-self: right;
+}
+
+.chef {
+  height:7vh;
+  margin-top: 6vh;
+}
+
+.titleSection {
+  margin-top: 5vh;
+  width: 100vw;
+  text-align: center;
+}
+
+.recipeTitle {
+  font-family: 'Josefin Sans', sans-serif;
+  margin-top: 5vh;
+  font-size: 4rem;
+}
+
+.ratings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.percent {
+  margin-left: 15vw;
+  display: inline-flex;
+}
+
+.thumbsUp {
+  height:3vh;
+  margin-top: -1vh;
+  margin-left: 1vw;
+}
+
+.date {
+  margin-left: 15vw;
+}
+
+.recipePhoto {
+  width:98vw;
+}
+
+.photoCredit {
+  margin-left: 25vw;
+  font-family: 'Josefin Sans', sans-serif;
+  color: rgb(158, 158, 158);
+}
+
+.descriptionSection {
+  padding-bottom: 20vh;
+  border-bottom: black 5px solid;
+}
+
+.social img {
+  height:4vh;
+  margin-left: 2vw;
+  margin-top: 2vh;
+}
+
+.briefDescription {
+  text-align: center;
+  margin-top: -20vh;
+}
+
+.smallText {
+  width:40vw;
+  margin-left: 29vw;
+}
+
+.printSection {
+  float:right;
+  margin-right: 10vw;
+  display: inline-flex;
+}
+
+.printSection p {
+  margin-top: 11vh;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.print {
+  height:4vh;
+  margin-right: 1vw;
+  margin-top: 10vh;
+}
