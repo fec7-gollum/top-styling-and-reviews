@@ -3,17 +3,19 @@ const faker = require('faker'); // GENERATE 100 RECORDS!
 const fs = require('file-system');
 const s3 = require('./s3.js');
 
-// TOP DATA [recipeName, thumbs, description, imageURL, photoBy]
+// TOP DATA [recipeName, thumbs, makes, description, imageURL, photoBy]
 
 let top = 1;
 const topData = [];
+const makeArr = [2, 4, 6, 8, 10];
 
 while (top <= 100) {
   topData.push(`
   {
     "recipeID": ${top},
     "name": "${faker.random.words()}",
-    "thumbs": ${Math.ceil(Math.random() * (100 - 54) + 54)},
+    "thumbs":  ${faker.random.number({ min: 54, max: 100 })},
+    "makes": ${makeArr[faker.random.number({ min: 0, max: 4 })]},
     "description": "${faker.lorem.paragraph()}",
     "photo": {
       "photoID": ${top},
@@ -44,14 +46,12 @@ while (reviews <= 10000) {
   reviewData.push(`
 {
   "reviewID": ${reviews},
-  "stars": ${Math.ceil(Math.random() * (5 - 0) + 0)},
+  "stars": ${faker.random.number({ min: 1, max: 5 })},
   "text": "${faker.lorem.paragraph()}",
-  "user": {
-    "userID": ${reviews},
-    "name": "${faker.name.findName()}",
-    "location": "${faker.address.state()}",
-    "date": "${faker.date.past().toString().slice(0, 11)}"
-  }
+  "name": "${faker.name.findName().replace('\'', '')}",
+  "location": "${faker.address.state()}",
+  "date": "${faker.date.past().toString().slice(0, 10)}",
+  "comboID": ${faker.random.number({ min: 1, max: 100 })},
 }`);
   reviews += 1;
 }

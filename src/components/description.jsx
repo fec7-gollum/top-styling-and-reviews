@@ -1,6 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Description = ({ fb, pin, twitter, email, print }) => (
+const Description = ({
+  fb, pin, twitter, email, print, makesNum, descript,
+}) => (
   <div className="descriptionSection">
     <div className="social">
       <img className="facebook" src={fb} alt={fb} />
@@ -12,8 +15,11 @@ const Description = ({ fb, pin, twitter, email, print }) => (
       <img className="email" src={email} alt={email} />
     </div>
     <div className="briefDescription">
-      <p className="makesNum">Makes Placeholder</p>
-      <p className="smallText">Illo unde et sit incidunt doloremque vitae. Facere ducimus voluptatum consequatur illo illo iste. Delectus consequatur aut sequi itaque.</p>
+      <p className="makesNum">
+        SERVINGS:
+        {makesNum}
+      </p>
+      <p className="smallText">{descript}</p>
     </div>
     <div className="printSection">
       <img className="print" src={print} alt={print} />
@@ -23,3 +29,13 @@ const Description = ({ fb, pin, twitter, email, print }) => (
 );
 
 export default Description;
+
+Description.propTypes = {
+  fb: PropTypes.string.isRequired,
+  pin: PropTypes.string.isRequired,
+  twitter: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  print: PropTypes.string.isRequired,
+  makesNum: PropTypes.number.isRequired,
+  descript: PropTypes.string.isRequired,
+};

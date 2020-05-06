@@ -8,4 +8,4 @@ const connection = mysql.createConnection({
   database: 'myFEC',
 });
 
-module.exports = connection;
+module.exports.connection = connection;
