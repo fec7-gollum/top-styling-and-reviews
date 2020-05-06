@@ -101,7 +101,7 @@
 }
 
 .photoCredit {
-  margin-left: 25vw;
+  margin-left: 50vw;
   font-family: 'Josefin Sans', sans-serif;
   color: rgb(158, 158, 158);
 }
@@ -114,7 +114,11 @@
 .social img {
   height:4vh;
   margin-left: 2vw;
-  margin-top: 2vh;
+  margin-top: 3vh;
+}
+
+.social img:hover {
+  cursor: pointer;
 }
 
 .briefDescription {
@@ -131,6 +135,7 @@
   float:right;
   margin-right: 10vw;
   display: inline-flex;
+  cursor: pointer;
 }
 
 .printSection p {
@@ -142,4 +147,67 @@
   height:4vh;
   margin-right: 1vw;
   margin-top: 10vh;
+}
+
+.ReviewModule {
+  margin-top: 40vh;
+  margin-left: 10vw;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width:50vw;
+  border-top: black 5px solid;
+  padding-top: 5vh;
+}
+
+textarea {
+  margin-top: 5vh;
+  resize: none;
+  padding:1rem;
+  width: 48vw;
+  font-size: 1rem;
+}
+
+.stars {
+  margin-left: -.5vw;
+}
+
+.stars img {
+  margin-top: 5vh;
+  height:2.5vh;
+  margin-left: .5vw;
+  margin-bottom: 4vh;
+}
+
+.textreview {
+  font-weight: lighter;
+}
+
+.userInfo {
+  margin-top: 3vh;
+  display: inline-flex;
+  font-size: .8rem;
+  font-weight: lighter;
+  padding-bottom: 4vh;
+}
+
+.userMargin {
+  margin-left: 1vw;
+}
+
+.moreButton {
+  width:10vw;
+  background-color: rgb(228, 228, 253);
+  text-align: center;
+  padding: 1.4rem;
+  margin-top: 5vh;
+  margin-left: 18vw;
+  font-size: 1rem;
+  margin-bottom: 20vh;
+}
+
+.moreButton:hover {
+  background-color: rgb(110, 77, 141);
+  color: white;
+  cursor: pointer;
 }

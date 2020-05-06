@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('../db/dbconfig.js');
 
-
 const server = express();
 
 // server.use(bodyParser.text());
@@ -13,26 +12,19 @@ server.use(express.static(path.join(__dirname, '../public/dist')));
 
 // Server Requests
 
-server.get('/recipes', (req, res) => {
-  const getRecipe = 'select * from recipes';
-  db.query(getRecipe, (error, result) => {
-    if (error) console.error(error);
-    res.status(200, console.log('got my recipe!')).send(result);
-  });
-});
-
 server.get('/recipes/:id', (req, res) => {
   const { id } = req.params;
-  const getRecipe = `select * from recipes where recipeID = ${id}`;
-  db.query(getRecipe, (error, result) => {
+  const getRecipe = `select * from recipes, photos where recipes.recipeID = ${id} && recipes.recipeID = photos.recipeID`;
+  db.connection.query(getRecipe, (error, result) => {
     if (error) console.error(error);
     res.status(200, console.log('got my recipe!')).send(result);
   });
 });
 
-server.get('/reviews', (req, res) => {
-  const getReviews = 'select * from reviews';
-  db.query(getReviews, (error, result) => {
+server.get('/reviews/:id', (req, res) => {
+  const { id } = req.params;
+  const getReviews = `select * from reviews where reviews.comboID = ${id}`;
+  db.connection.query(getReviews, (error, result) => {
     if (error) console.error(error);
     res.status(200, console.log('got my recipe!')).send(result);
   });

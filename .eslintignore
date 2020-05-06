@@ -1,3 +1,4 @@
 # items to not lint
 /db/reviewData
 /db/topData
+/src/components/reviews.jsx
