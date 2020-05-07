@@ -8,12 +8,12 @@ class Reviews extends React.Component {
     super();
     this.state = {
       click: 0,
-      myData: reviewData,
-      forty: total40,
-      sixty: total60,
-      eighty: total80,
-      hundred: total100,
-      hundredtwenty: total120,
+      myData: reviewData || [{'mock': 'mock'}],
+      forty: total40 || [{'mock': 'mock'}],
+      sixty: total60 || [{'mock': 'mock'}],
+      eighty: total80 || [{'mock': 'mock'}],
+      hundred: total100 || [{'mock': 'mock'}],
+      hundredtwenty: total120 || [{'mock': 'mock'}],
     };
     this.changeData = this.changeData.bind(this);
   }
@@ -52,7 +52,6 @@ class Reviews extends React.Component {
   }
 
   render() {
-    if(this.state.myData) {
     for (let i = 0; i < this.state.myData.length; i++) {
       if (this.state.myData[i].stars === 1) {
         this.state.myData[i].stars = (
@@ -105,7 +104,7 @@ class Reviews extends React.Component {
           </div>
         );
       }
-    }}
+    }
     return (
       <div>
         <div>REVIEWS</div>
