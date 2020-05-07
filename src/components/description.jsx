@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -31,11 +32,11 @@ const Description = ({
 export default Description;
 
 Description.propTypes = {
-  fb: PropTypes.string.isRequired,
-  pin: PropTypes.string.isRequired,
-  twitter: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  print: PropTypes.string.isRequired,
-  makesNum: PropTypes.number.isRequired,
-  descript: PropTypes.string.isRequired,
+  fb: PropTypes.string,
+  pin: PropTypes.string,
+  twitter: PropTypes.string,
+  email: PropTypes.string,
+  print: PropTypes.string,
+  makesNum: PropTypes.number,
+  descript: PropTypes.string,
 };

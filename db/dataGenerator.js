@@ -62,3 +62,5 @@ fs.writeFile('./reviewData/reviewData.js',
     if (err) return console.log(err);
     return console.log('Wrote Reviews');
   });
+
+module.exports = top;

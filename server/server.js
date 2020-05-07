@@ -32,3 +32,5 @@ server.get('/reviews/:id', (req, res) => {
 
 // eslint-disable-next-line no-console
 server.listen(3001, () => { console.log('server ON!'); });
+
+module.exports = server;
