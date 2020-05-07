@@ -6,9 +6,37 @@ import Title from './src/components/title';
 import TopBar from './src/components/topbar';
 import Description from './src/components/description';
 import Reviews from './src/components/reviews';
-// import App from './src/components/app';
+import App from './src/components/app';
+import Index from './src/index';
+
+it('renders without crashing', () => {
+  expect(
+    JSON.stringify(
+      { ...Index, _reactInternalInstance: 'censored' },
+    ),
+  ).toMatchSnapshot();
+});
+
+
+it('Test', () => {
+  const mockCallBack = jest.fn();
+  const button = mount((<Reviews onClick={mockCallBack}>Ok!</Reviews>));
+  button.find('.moreButton').simulate('click');
+  button.find('.moreButton').simulate('click');
+  button.find('.moreButton').simulate('click');
+  button.find('.moreButton').simulate('click');
+  button.find('.moreButton').simulate('click');
+});
+
 
 // components
+
+describe('App Component', () => {
+  it('should render', () => {
+    mount(<App />);
+  });
+});
+
 describe('Title Component', () => {
   it('should render', () => {
     shallow(<Title />);
@@ -29,33 +57,19 @@ describe('Description Component', () => {
 
 describe('Reviews Component', () => {
   it('should render', () => {
-    expect(mount(
-      <Reviews
-        click={0}
-        myData={0}
-        forty={0}
-        sixty={0}
-        eighty={0}
-        hundred={0}
-        hundredtwenty={0}
-      />,
-    )).toBe(true);
+    shallow(
+      <Reviews />,
+    );
   });
 });
 
-// describe('App Component', () => {
-//   it('should render', () => {
-//     shallow(<App />);
-//   });
-// });
-
-const supertest = require('supertest');
+// const supertest = require('supertest');
 const myTopData = require('./db/topData/topData.js');
 const myReviewData = require('./db/reviewData/reviewData.js');
 const images = require('./db/s3.js');
-const server = require('./server/server.js');
+// const server = require('./server/server.js');
+// const request = supertest(server);
 
-const request = supertest(server);
 
 // myTopData
 test('myTopData should be an Array (object) with 100 entries', () => {
@@ -129,17 +143,17 @@ test('images should be an Array (object) with 100 urls', () => {
   expect(images.length).toBe(100);
 });
 
-// server
-it('successfully gets an object of data from the recipes endpoint', async (done) => {
-  const response = await request.get('/recipes/1');
-  expect(response.status).toBe(200);
-  expect(typeof response).toBe('object');
-  done();
-});
+// // server
+// it('successfully gets an object of data from the recipes endpoint', async (done) => {
+//   const response = await request.get('/recipes/1');
+//   expect(response.status).toBe(200);
+//   expect(typeof response).toBe('object');
+//   done();
+// });
 
-it('successfully gets an object of data from the reviews endpoint', async (done) => {
-  const response = await request.get('/reviews/1');
-  expect(response.status).toBe(200);
-  expect(typeof response).toBe('object');
-  done();
-});
+// it('successfully gets an object of data from the reviews endpoint', async (done) => {
+//   const response = await request.get('/reviews/1');
+//   expect(response.status).toBe(200);
+//   expect(typeof response).toBe('object');
+//   done();
+// });

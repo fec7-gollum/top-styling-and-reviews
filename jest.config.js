@@ -2,12 +2,16 @@
 module.exports = {
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
-  coveragePathIgnorePatterns: ['<rootDir>/db/dbSeeder.js', '<rootDir>/db/dataGenerator.js', '<rootDir>/db/dbconfig.js', '<rootDir>/public/dist/bundle.js'],
+  coveragePathIgnorePatterns: ['<rootDir>/db/dataGenerator.js', '<rootDir>/db/dbconfig.js', '<rootDir>/public/dist/bundle.js', '<rootDir>/db/dbSeeder.js'],
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ['./src/**/*.{js,jsx}', '!**/node_modules/**'],
+  collectCoverageFrom: ['./src/**/*.{js,jsx}', './db/**/*.{js,jsx}', '!**/node_modules/**'],
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
   // An array of file extensions your modules use
+  moduleNameMapper: {
+    '\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/__mocks__/fileMock.js',
+    '\\.(css|less)$': '<rootDir>/mocks/fileMock.js',
+  },
   moduleFileExtensions: ['js', 'json', 'jsx'],
   // The paths to modules that run some code to configure or set up the testing environment before each test
   setupFiles: ['<rootDir>/enzyme.config.js'],
@@ -19,6 +23,9 @@ module.exports = {
   testPathIgnorePatterns: ['\\\\node_modules\\\\'],
   // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
   testURL: 'http://localhost',
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest',
+  },
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
   // Indicates whether each individual test should be reported during the run
