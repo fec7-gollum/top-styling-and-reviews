@@ -1,4 +1,4 @@
-module.exports = myTopData = [
+let myTopData = [
   {
     "recipeID": 1,
     "name": "CSS Rustic Fresh Soap Cotton",
@@ -1200,3 +1200,5 @@ module.exports = myTopData = [
     }
   }
 ]
+
+module.exports = myTopData;

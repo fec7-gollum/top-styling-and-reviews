@@ -52,6 +52,7 @@ class Reviews extends React.Component {
   }
 
   render() {
+    if(this.state.myData) {
     for (let i = 0; i < this.state.myData.length; i++) {
       if (this.state.myData[i].stars === 1) {
         this.state.myData[i].stars = (
@@ -104,7 +105,7 @@ class Reviews extends React.Component {
           </div>
         );
       }
-    }
+    }}
     return (
       <div>
         <div>REVIEWS</div>
@@ -152,10 +153,10 @@ class Reviews extends React.Component {
 export default Reviews;
 
 Reviews.propTypes = {
-  reviewData: PropTypes.arrayOf(PropTypes.object).isRequired,
-  total40: PropTypes.arrayOf(PropTypes.object).isRequired,
-  total60: PropTypes.arrayOf(PropTypes.object).isRequired,
-  total80: PropTypes.arrayOf(PropTypes.object).isRequired,
-  total100: PropTypes.arrayOf(PropTypes.object).isRequired,
-  total120: PropTypes.arrayOf(PropTypes.object).isRequired,
+  reviewData: PropTypes.arrayOf(PropTypes.object),
+  total40: PropTypes.arrayOf(PropTypes.object),
+  total60: PropTypes.arrayOf(PropTypes.object),
+  total80: PropTypes.arrayOf(PropTypes.object),
+  total100: PropTypes.arrayOf(PropTypes.object),
+  total120: PropTypes.arrayOf(PropTypes.object),
 };

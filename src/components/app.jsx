@@ -5,7 +5,6 @@ import TopBar from './topbar';
 import Title from './title';
 import Description from './description';
 import Reviews from './reviews';
-
 import menu from '../../public/images/menu.svg';
 import search from '../../public/images/search.svg';
 import chef from '../../public/images/chef.svg';
@@ -40,7 +39,7 @@ class App extends React.Component {
   }
 
   getOne() {
-    axios.get('/recipes/64')
+    axios.get('/recipes/91')
       .then((result) => result.data)
       .then((data) => {
         this.setState({
@@ -50,7 +49,7 @@ class App extends React.Component {
   }
 
   getBottom() {
-    axios.get('/reviews/64')
+    axios.get('/reviews/91')
       .then((result) => result.data)
       .then((data) => {
         this.setState({

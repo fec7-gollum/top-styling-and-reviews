@@ -7,14 +7,22 @@
   "engines": {
     "node": ">=10.16"
   },
+  "jest": {
+    "moduleNameMapper": {
+         "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+         "\\.(css|less)$": "<rootDir>/mocks/fileMock.js"
+       }
+   },
   "scripts": {
     "build:dev": "webpack -d --watch",
     "seed": "mysql -u root < /Users/justinpaoletta/Desktop/top-styling-and-reviews/db/schema.sql && node db/dbSeeder.js",
     "start": "node server/server.js",
-    "start:dev": "nodemon server/server.js -w server -w database-mysql2"
+    "start:dev": "nodemon server/server.js -w server -w database-mysql2",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/core": "^7.9.6",
+    "@babel/plugin-transform-runtime": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
     "axios": "^0.19.2",
@@ -33,18 +41,24 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
     "style-loader": "^1.2.1",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0"
   },
   "devDependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
+    "jest": "^26.0.1",
     "nodemon": "^2.0.3",
+    "supertest": "^4.0.2",
     "webpack-cli": "^3.3.11"
   }
 }

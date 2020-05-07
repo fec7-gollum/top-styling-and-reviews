@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -16,6 +17,6 @@ const TopBar = ({ menu, search }) => (
 export default TopBar;
 
 TopBar.propTypes = {
-  menu: PropTypes.string.isRequired,
-  search: PropTypes.string.isRequired,
+  menu: PropTypes.string,
+  search: PropTypes.string,
 };
