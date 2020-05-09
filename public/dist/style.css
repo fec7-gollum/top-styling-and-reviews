@@ -1,3 +1,5 @@
+
+
 .topRow {
   padding-top: 1vh;
   display: grid;
@@ -55,6 +57,7 @@
 
 .search {
   justify-self: right;
+  margin-left: 8vw;
 }
 
 .chef {
@@ -98,6 +101,7 @@
 
 .recipePhoto {
   width:98vw;
+  margin-left: -1vw;
 }
 
 .photoCredit {
@@ -119,6 +123,8 @@
 
 .social img:hover {
   cursor: pointer;
+  transform: scale(1.6);
+  transition: all .3s ease-in-out;
 }
 
 .briefDescription {
@@ -210,4 +216,162 @@ textarea {
   background-color: rgb(110, 77, 141);
   color: white;
   cursor: pointer;
+}
+
+.modal {
+  height:100vh;
+  width:99vw;
+  background-color: rgb(253, 251, 249);
+  z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 1px black;
+  text-align: center;
+}
+
+
+.searchModal {
+    height:100vh;
+    width:99vw;
+    background-color: rgb(253, 251, 249);
+    z-index: 2;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 1px black;
+    text-align: center;
+}
+
+#makeAgain {
+  margin-top: 10vh;
+}
+
+#no {
+  margin-left: 4vw;
+  margin-right: 1vw;
+}
+
+.labels {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+#thumbUp {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  height: 3vh;
+}
+
+#thumbDown {
+  transform: rotate(-180deg);
+  height: 3vh;
+  transform-origin: center;
+  margin-left: 1vw;
+}
+
+.bottomButtons {
+  display: inline-flex;
+}
+
+.cancelbtn {
+  width:7vw;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 1.2rem;
+  margin-top: 5vh;
+  font-size: 1rem;
+  margin-bottom: 10vh;
+  border: 1px solid black;
+}
+
+.savebtn {
+  width:7vw;
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 1.2rem;
+  margin-top: 5vh;
+  font-size: 1rem;
+  margin-bottom: 10vh;
+  color: white;
+  margin-left: 2vw;
+}
+
+.myStars {
+
+}
+
+.myStars img {
+  margin-left: 1vw;
+}
+
+.fail {
+  position: absolute;
+  width: 99vw;
+  color: red;
+}
+
+.pleaseSignUp {
+  margin-top: 4vh;
+  position: absolute;
+  width: 99vw;
+}
+
+.pleaseSignUp a {
+  text-decoration: none;
+  color: rgb(110, 77, 141);
+}
+
+.centerInput {
+  padding: 1vh;
+  margin-top: .25vh;
+  text-align: center;
+}
+
+.signIn {
+  width:10vw;
+}
+
+.searching {
+  position: absolute;
+  margin-left: -22%;
+  margin-top: 20vh;
+}
+
+.findit {
+  position: absolute;
+  margin-top: 36vh;
+  margin-left: 18vw;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-size: 1rem;
+  padding: .6rem;
+  width: 8vw;
+}
+
+.closemodal {
+  float:right;
+  margin-right: 2vw;
+  color: white;
+  background-color: black;
+  padding:1rem;
+  font-family: monospace;
+  height:3vh;
+  margin-top: 2vh;
+}
+
+#eyes{
+  position:absolute;
+  height:1vh;
+  margin-left: 48.4%;
+  margin-top: 1.23%;
+}
+
+#eyes2{
+  position:absolute;
+  height:1vh;
+  margin-left: 49.55%;
+  margin-top: 1.23%;
 }

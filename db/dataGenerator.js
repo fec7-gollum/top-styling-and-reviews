@@ -28,8 +28,10 @@ while (top <= 100) {
 }
 
 fs.writeFile('./topData/topData.js',
-  `module.exports = myTopData = [${topData}
-]`,
+  `let myTopData = [${topData}
+]
+
+module.exports = myTopData`,
   (err) => {
     if (err) return console.log(err);
     return console.log('Wrote Top Data');
@@ -56,8 +58,10 @@ while (reviews <= 10000) {
   reviews += 1;
 }
 fs.writeFile('./reviewData/reviewData.js',
-  `module.exports = reviewData = [${reviewData}
-]`,
+  `let reviewData = [${reviewData}
+]
+
+module.exports = reviewData`,
   (err) => {
     if (err) return console.log(err);
     return console.log('Wrote Reviews');

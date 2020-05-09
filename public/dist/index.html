@@ -18,9 +18,35 @@
 
 
 <script type="text/javascript" src="./bundle.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<!-- <script src="script.js"></script> -->
+<script>
+    $(document).mousemove(function(e){
+    console.log(e.pageX);
+    if (e.pageX > 0 && e.pageX < 300) {
+      $('#eyes').css('margin-left', '48.2%');
+      $('#eyes2').css('margin-left', '49.35%');
+    }
+    if (e.pageX > 300 && e.pageX < 600) {
+      $('#eyes').css('margin-left', '48.3%');
+      $('#eyes2').css('margin-left', '49.45%');
+    }
+    if (e.pageX > 600 && e.pageX < 900) {
+      $('#eyes').css('margin-left', '48.4%');
+      $('#eyes2').css('margin-left', '49.55%');
+    }
+    if (e.pageX > 900 && e.pageX < 1200) {
+      $('#eyes').css('margin-left', '48.5%');
+      $('#eyes2').css('margin-left', '49.65%');
+    }
+    if (e.pageX > 1200) {
+      $('#eyes').css('margin-left', '48.6%');
+      $('#eyes2').css('margin-left', '49.75%');
+    }
+  });
+</script>
 
 </body>
 
 </html>
+

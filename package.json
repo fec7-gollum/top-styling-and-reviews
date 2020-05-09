@@ -28,6 +28,7 @@
     "faker": "^4.1.0",
     "file-loader": "^6.0.0",
     "file-system": "^2.2.2",
+    "hotkeys-js": "^3.7.6",
     "jquery": "^3.5.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",

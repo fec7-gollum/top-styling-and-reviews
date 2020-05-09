@@ -7,13 +7,13 @@ const Description = ({
 }) => (
   <div className="descriptionSection">
     <div className="social">
-      <img className="facebook" src={fb} alt={fb} />
+      <a href="https://www.facebook.com/"><img className="facebook" src={fb} alt={fb} /></a>
       <br />
-      <img className="pinterest" src={pin} alt={pin} />
+      <a href="https://www.pinterest.com/"><img className="pinterest" src={pin} alt={pin} /></a>
       <br />
-      <img className="twitter" src={twitter} alt={twitter} />
+      <a href="https://twitter.com/explore"><img className="twitter" src={twitter} alt={twitter} /></a>
       <br />
-      <img className="email" src={email} alt={email} />
+      <a href="mailto:?subject=Check Out This Recipe!&body=This looks SO GOOD and I thought you might like it https://www.bonappetit.com/recipe/cinnamon-date-sticky-buns"><img className="email" src={email} alt={email} /></a>
     </div>
     <div className="briefDescription">
       <p className="makesNum">
@@ -22,7 +22,7 @@ const Description = ({
       </p>
       <p className="smallText">{descript}</p>
     </div>
-    <div className="printSection">
+    <div className="printSection"  onClick={() => { window.print(); return false; }}>
       <img className="print" src={print} alt={print} />
       <p>PRINT</p>
     </div>
