@@ -27,15 +27,16 @@ class App extends React.Component {
       total60: undefined,
       total80: undefined,
       total100: undefined,
-      total120: undefined,
       login: 'LOGIN',
+      url: window.location.pathname,
     };
+
     this.getOne = this.getOne.bind(this);
     this.getBottom = this.getBottom.bind(this);
     this.updateLogin = this.updateLogin.bind(this);
   }
 
-  //click on login in app... get review modal to pop up... simulate click on text area
+  // click on login in app... get review modal to pop up... simulate click on text area
 
   componentDidMount() {
     this.getOne();
@@ -43,7 +44,8 @@ class App extends React.Component {
   }
 
   getOne() {
-    axios.get('/recipes/8')
+    const { url } = this.state;
+    axios.get(`${url}recipes`)
       .then((result) => result.data)
       .then((data) => {
         this.setState({
@@ -53,16 +55,16 @@ class App extends React.Component {
   }
 
   getBottom() {
-    axios.get('/reviews/8')
+    const { url } = this.state;
+    axios.get(`${url}reviews`)
       .then((result) => result.data)
       .then((data) => {
         this.setState({
-          bottomdata: data.slice(90, 120).reverse(),
-          total40: data.slice(80, 120).reverse(),
-          total60: data.slice(60, 120).reverse(),
-          total80: data.slice(40, 120).reverse(),
-          total100: data.slice(20, 120).reverse(),
-          total120: data.slice(0, 120).reverse(),
+          bottomdata: data.slice(-20).reverse(),
+          total40: data.slice(-40).reverse(),
+          total60: data.slice(-60).reverse(),
+          total80: data.slice(-80).reverse(),
+          total100: data.slice(-100).reverse(),
         });
       });
   }
@@ -77,9 +79,10 @@ class App extends React.Component {
   render() {
     let myPage;
     const {
-      topdata, bottomdata, total40, total60, total80, total100, total120, login,
+      topdata, bottomdata, total40, total60, total80, total100, login,
     } = this.state;
     if (topdata && bottomdata) {
+      const { url } = this.state;
       myPage = (
         <div>
           <div className="TopModule">
@@ -114,9 +117,8 @@ class App extends React.Component {
               total60={total60}
               total80={total80}
               total100={total100}
-              total120={total120}
-              recall={this.getBottom()}
               loginLogout={this.updateLogin}
+              url={url}
             />
           </div>
         </div>

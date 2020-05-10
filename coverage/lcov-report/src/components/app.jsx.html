@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">66.67% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/18</span>
+                <span class='fraction'>14/21</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">66.67% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/18</span>
+                <span class='fraction'>14/21</span>
             </div>
         
             
@@ -190,7 +190,9 @@
 <a name='L131'></a><a href='#L131'>131</a>
 <a name='L132'></a><a href='#L132'>132</a>
 <a name='L133'></a><a href='#L133'>133</a>
-<a name='L134'></a><a href='#L134'>134</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -222,29 +224,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -255,6 +249,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -273,7 +277,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -352,15 +356,16 @@ class App extends React.Component {
       total60: undefined,
       total80: undefined,
       total100: undefined,
-      total120: undefined,
       login: 'LOGIN',
+      url: window.location.pathname,
     };
+&nbsp;
     this.getOne = this.getOne.bind(this);
     this.getBottom = this.getBottom.bind(this);
     this.updateLogin = this.updateLogin.bind(this);
   }
 &nbsp;
-  //click on login in app... get review modal to pop up... simulate click on text area
+  // click on login in app... get review modal to pop up... simulate click on text area
 &nbsp;
   componentDidMount() {
     this.getOne();
@@ -368,7 +373,8 @@ class App extends React.Component {
   }
 &nbsp;
   getOne() {
-    axios.get('/recipes/8')
+    const { url } = this.state;
+    axios.get(`${url}recipes`)
       .then(<span class="fstat-no" title="function not covered" >(r</span>esult) =&gt; <span class="cstat-no" title="statement not covered" >result.data)</span>
       .then(<span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; {
 <span class="cstat-no" title="statement not covered" >        this.setState({</span>
@@ -378,16 +384,16 @@ class App extends React.Component {
   }
 &nbsp;
   getBottom() {
-    axios.get('/reviews/8')
+    const { url } = this.state;
+    axios.get(`${url}reviews`)
       .then(<span class="fstat-no" title="function not covered" >(r</span>esult) =&gt; <span class="cstat-no" title="statement not covered" >result.data)</span>
       .then(<span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; {
 <span class="cstat-no" title="statement not covered" >        this.setState({</span>
-          bottomdata: data.slice(90, 120).reverse(),
-          total40: data.slice(80, 120).reverse(),
-          total60: data.slice(60, 120).reverse(),
-          total80: data.slice(40, 120).reverse(),
-          total100: data.slice(20, 120).reverse(),
-          total120: data.slice(0, 120).reverse(),
+          bottomdata: data.slice(-20).reverse(),
+          total40: data.slice(-40).reverse(),
+          total60: data.slice(-60).reverse(),
+          total80: data.slice(-80).reverse(),
+          total100: data.slice(-100).reverse(),
         });
       });
   }
@@ -402,9 +408,10 @@ class App extends React.Component {
   render() {
     let myPage;
     const {
-      topdata, bottomdata, total40, total60, total80, total100, total120, login,
+      topdata, bottomdata, total40, total60, total80, total100, login,
     } = this.state;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (topdata &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >bottomdata)</span> {
+      const { url } = <span class="cstat-no" title="statement not covered" >this.state;</span>
 <span class="cstat-no" title="statement not covered" >      myPage = (</span>
         &lt;div&gt;
           &lt;div className="TopModule"&gt;
@@ -439,9 +446,8 @@ class App extends React.Component {
               total60={total60}
               total80={total80}
               total100={total100}
-              total120={total120}
-              recall={this.getBottom()}
               loginLogout={this.updateLogin}
+              url={url}
             /&gt;
           &lt;/div&gt;
         &lt;/div&gt;
@@ -463,7 +469,7 @@ export default App;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri May 08 2020 23:04:43 GMT-0400 (Eastern Daylight Time)
+                at Sat May 09 2020 22:19:53 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

@@ -1,5 +1,3 @@
-
-
 .topRow {
   padding-top: 1vh;
   display: grid;
@@ -249,9 +247,12 @@ textarea {
   margin-top: 10vh;
 }
 
+#yes {
+  margin-left: 1vw;
+}
+
 #no {
-  margin-left: 4vw;
-  margin-right: 1vw;
+  margin-left: 1vw;
 }
 
 .labels {
@@ -300,7 +301,7 @@ textarea {
 }
 
 .myStars {
-
+  display: inline-flex;
 }
 
 .myStars img {
@@ -351,7 +352,7 @@ textarea {
   width: 8vw;
 }
 
-.closemodal {
+.closemodal img {
   float:right;
   margin-right: 2vw;
   color: white;

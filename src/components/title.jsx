@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -26,11 +25,11 @@ const Title = ({
 export default Title;
 
 Title.propTypes = {
-  chef: PropTypes.string,
-  name: PropTypes.string,
-  rating: PropTypes.number,
-  thumbsUp: PropTypes.string,
-  month: PropTypes.string,
-  randPhoto: PropTypes.string,
-  photoBy: PropTypes.string,
+  chef: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  thumbsUp: PropTypes.string.isRequired,
+  month: PropTypes.string.isRequired,
+  randPhoto: PropTypes.string.isRequired,
+  photoBy: PropTypes.string.isRequired,
 };
