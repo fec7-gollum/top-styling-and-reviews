@@ -18,7 +18,7 @@ it('renders without crashing', () => {
 });
 
 
-it('Test', () => {
+it('Tests The Buttons in Reviews', () => {
   const mockCallBack = jest.fn();
   const button = mount((<Reviews onClick={mockCallBack}>Ok!</Reviews>));
   button.find('.moreButton').simulate('click');
@@ -26,11 +26,35 @@ it('Test', () => {
   button.find('.moreButton').simulate('click');
   button.find('.moreButton').simulate('click');
   button.find('.moreButton').simulate('click');
+  button.find('.texta').simulate('click');
+  button.find('.texta').simulate('click');
+  button.find('.cI1').simulate('change');
+  button.find('.cI2').simulate('change');
+  button.find('.signIn').simulate('click');
+  button.find('#yes').simulate('click');
+  button.find('#no').simulate('click');
+  button.find('.starclicker').simulate('click');
+  button.find('.starclicker2').simulate('click');
+  button.find('.starclicker3').simulate('click');
+  button.find('.starclicker4').simulate('click');
+  button.find('.starclicker5').simulate('click');
+  button.find('.savebtn').simulate('click');
+  const button2 = mount((<Reviews onClick={mockCallBack}>Ok!</Reviews>));
+  button2.find('.texta').simulate('click');
+  button2.find('.texta').simulate('click');
+  button2.find('.texta').simulate('change');
+  button2.find('.cancelbtn').simulate('click');
 });
 
+it('Tests The Search Functionality', () => {
+  const mockCallBack = jest.fn();
+  const button = mount((<TopBar onClick={mockCallBack}>Ok!</TopBar>));
+  button.find('.search').simulate('click');
+  button.find('.searching').simulate('change');
+  button.find('.closemodal').simulate('click');
+});
 
 // components
-
 describe('App Component', () => {
   it('should render', () => {
     mount(<App />);
@@ -50,8 +74,12 @@ describe('TopBar Component', () => {
 });
 
 describe('Description Component', () => {
+  const descript = shallow(<Description />);
   it('should render', () => {
-    shallow(<Description />);
+    expect(descript.exists()).toBe(true);
+  });
+  it('should render', () => {
+    descript.find('.printSection').simulate('click');
   });
 });
 
@@ -63,13 +91,9 @@ describe('Reviews Component', () => {
   });
 });
 
-// const supertest = require('supertest');
 const myTopData = require('./db/topData/topData.js');
 const myReviewData = require('./db/reviewData/reviewData.js');
 const images = require('./db/s3.js');
-// const server = require('./server/server.js');
-// const request = supertest(server);
-
 
 // myTopData
 test('myTopData should be an Array (object) with 100 entries', () => {
@@ -143,7 +167,11 @@ test('images should be an Array (object) with 100 urls', () => {
   expect(images.length).toBe(100);
 });
 
-// // server
+// server
+// const supertest = require('supertest');
+// const server = require('./server/server.js');
+// const request = supertest(server);
+
 // it('successfully gets an object of data from the recipes endpoint', async (done) => {
 //   const response = await request.get('/recipes/1');
 //   expect(response.status).toBe(200);

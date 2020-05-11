@@ -1,6 +1,5 @@
-/* eslint-disable import/extensions */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app.jsx';
+import App from './components/app';
 
 ReactDOM.render(<App />, document.getElementById('app') || document.createElement('div'));

@@ -1,24 +1,24 @@
+/* eslint-disable no-plusplus */
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import thumbsUp from '../../public/images/thumbs.svg';
 import blankstar from '../../public/images/blankstar.svg';
 import star from '../../public/images/star.svg';
-import axios from 'axios';
 import users from '../../mockUsers';
 
 class Reviews extends React.Component {
   constructor({
-    reviewData, total40, total60, total80, total100, total120,
+    reviewData, total40, total60, total80, total100,
   }) {
     super();
     this.state = {
       click: 0,
-      myData: reviewData || [{'mock': 'mock'}],
-      forty: total40 || [{'mock': 'mock'}],
-      sixty: total60 || [{'mock': 'mock'}],
-      eighty: total80 || [{'mock': 'mock'}],
-      hundred: total100 || [{'mock': 'mock'}],
-      hundredtwenty: total120 || [{'mock': 'mock'}],
+      myData: reviewData || [{ mock: 'mock' }],
+      forty: total40 || [{ mock: 'mock' }],
+      sixty: total60 || [{ mock: 'mock' }],
+      eighty: total80 || [{ mock: 'mock' }],
+      hundred: total100 || [{ mock: 'mock' }],
       modal: false,
       login: false,
       username: '',
@@ -32,7 +32,7 @@ class Reviews extends React.Component {
       finalRate: 0,
       again: '',
       reviewText: '',
-      styles: { color: 'black'},
+      styles: { color: 'black' },
       incorrect: false,
     };
     this.changeData = this.changeData.bind(this);
@@ -41,252 +41,390 @@ class Reviews extends React.Component {
     this.handleReview = this.handleReview.bind(this);
     this.handleSubmission = this.handleSubmission.bind(this);
     this.checkUser = this.checkUser.bind(this);
-
   }
 
   checkUser() {
-    users.forEach((user) => { if (user.username === this.state.username && user.password === this.state.password) {
-      console.log('Valid Login');
-      this.setState({modal: false, login: true}); console.log(this.state.username, this.state.password);
-       //run function to update state of topbar
-       this.props.loginLogout();
-    }});
-    this.setState({styles: {color: 'red'}, incorrect: true});
+    users.forEach((user) => {
+      const { username, password } = this.state;
+      const { loginLogout } = this.props;
+      if (user.username === username && user.password === password) {
+        this.setState({ modal: false, login: true });
+        loginLogout();
+      }
+    });
+    this.setState({ styles: { color: 'red' }, incorrect: true });
   }
 
   changeData() {
-    if (this.state.click === 0) {
+    const {
+      click, forty, sixty, eighty, hundred,
+    } = this.state;
+    if (click === 0) {
       this.setState({
-        myData: this.state.forty,
+        myData: forty,
         click: 1,
       });
     }
-    if (this.state.click === 1) {
+    if (click === 1) {
       this.setState({
-        myData: this.state.sixty,
+        myData: sixty,
         click: 2,
       });
     }
-    if (this.state.click === 2) {
+    if (click === 2) {
       this.setState({
-        myData: this.state.eighty,
+        myData: eighty,
         click: 3,
       });
     }
-    if (this.state.click === 3) {
+    if (click === 3) {
       this.setState({
-        myData: this.state.hundred,
+        myData: hundred,
         click: 4,
-      });
-    }
-    if (this.state.click === 4) {
-      this.setState({
-        myData: this.state.hundredtwenty,
-        click: 5,
       });
     }
   }
 
   handleUsername(value) {
     this.setState({
-      username: value
+      username: value,
     });
   }
 
   handlePassword(value) {
     this.setState({
-      password: value
-    })
+      password: value,
+    });
   }
 
   handleReview(value) {
     this.setState({
-      reviewText: value
-    })
+      reviewText: value,
+    });
   }
 
-  handleSubmission(star, txt, nme) {
-    axios.post('reviews/8', {
-      stars: star,
+  handleSubmission(sta, txt, nme) {
+    const { url } = this.props;
+    axios.post(`${url}reviews`, {
+      stars: sta,
       text: `${txt}`,
-      name: `${nme}`
+      name: `${nme}`,
     })
-    .then(() => {
-      axios.get('/reviews/8')
-      .then((result) => result.data)
-      .then((data) => {
-        this.setState({
-          myData: data.slice(90, 120).reverse(),
-          forty: data.slice(80, 120).reverse(),
-          sixty: data.slice(60, 120).reverse(),
-          eighty: data.slice(40, 120).reverse(),
-          hundred: data.slice(20, 120).reverse(),
-          hundredtwenty: data.slice(0, 120).reverse(),
-        });
+      .then(() => {
+        axios.get(`${url}reviews`)
+          .then((result) => result.data)
+          .then((data) => {
+            this.setState({
+              myData: data.slice(-20).reverse(),
+              forty: data.slice(-40).reverse(),
+              sixty: data.slice(-60).reverse(),
+              eighty: data.slice(-80).reverse(),
+              hundred: data.slice(-100).reverse(),
+            });
+          });
       });
-    })
   }
 
   render() {
     let loginFail;
-    if (this.state.incorrect === true) {
-      loginFail = <div className='fail'>Incorrect Username or Password</div>
-    }
     let actualReviewTop;
     let actualReviewBottom;
     let actualStars;
-    if (this.state.writeReview >= 2) {
-      actualReviewTop =
-      <div>
-        <p id="makeAgain">Would You Make This Again?</p>
-        <br />
-        <input type="radio" id="yes" name="again" onClick={() => {this.setState({ again: 'yes' })}} />
-        <img id="thumbUp" src={thumbsUp} /><label className="labels" htmlFor="yes"> YES </label>
-        <input type="radio" id="no" name="again" onClick={() => {this.setState({ again: 'no' })}} />
-        <label className="labels" htmlFor="no"> NO</label><img id="thumbDown" src={thumbsUp} />
-      </div>
-      actualReviewBottom =
-      <div className="bottomButtons">
-        <div className="cancelbtn" onClick={() => {this.setState({ writeReview: 1})}}>Cancel</div>
-        <div className="savebtn" onClick={() => {this.setState({ writeReview: -Infinity}); console.log( this.state.finalRate, this.state.again, this.state.reviewText); this.handleSubmission(this.state.finalRate, this.state.reviewText, this.state.username) }} >Save</div>
-      </div>
-      actualStars =
-      <div className='myStars'>
-        <p>Rate This Recipe : </p>
-        <img onClick={() => {this.setState({ starRate1: star, starRate2: blankstar, starRate3: blankstar, starRate4: blankstar, starRate5: blankstar, finalRate: 1 })}} src={this.state.starRate1} />
-        <img onClick={() => {this.setState({ starRate1: star, starRate2: star, starRate3: blankstar, starRate4: blankstar, starRate5: blankstar,  finalRate: 2 })}} src={this.state.starRate2} />
-        <img onClick={() => {this.setState({ starRate1: star, starRate2: star, starRate3: star, starRate4: blankstar, starRate5: blankstar,  finalRate: 3 })}} src={this.state.starRate3} />
-        <img onClick={() => {this.setState({ starRate1: star, starRate2: star, starRate3: star, starRate4: star, starRate5: blankstar, finalRate: 4 })}} src={this.state.starRate4} />
-        <img onClick={() => {this.setState({ starRate1: star, starRate2: star, starRate3: star, starRate4: star, starRate5: star, finalRate: 5 })}} src={this.state.starRate5} />
-      </div>
+    const {
+      incorrect, writeReview, finalRate, reviewText, username, again,
+      myData, starRate1, starRate2, starRate3, starRate4, starRate5,
+      modal, login, styles, password,
+    } = this.state;
+    if (incorrect === true) {
+      loginFail = <div className="fail">Incorrect Username or Password</div>;
+    }
+    if (writeReview >= 2) {
+      // eslint-disable-next-line no-console
+      console.log(again);
+      actualReviewTop = (
+        <div>
+          <p id="makeAgain">Would You Make This Again?</p>
+          <br />
+          <label className="labels" htmlFor="yes">
+            YES
+            <input type="radio" id="yes" name="again" onClick={() => { this.setState({ again: 'yes' }); }} />
+            <img id="thumbUp" alt="" src={thumbsUp} />
+          </label>
+          <label className="labels" htmlFor="no">
+            NO
+            <input type="radio" id="no" name="again" onClick={() => { this.setState({ again: 'no' }); }} />
+          </label>
+          <img id="thumbDown" alt="" src={thumbsUp} />
+        </div>
+      );
+      actualReviewBottom = (
+        <div className="bottomButtons">
+          <div role="button" tabIndex={0} onKeyDown className="cancelbtn" onClick={() => { this.setState({ writeReview: 1 }); }}>Cancel</div>
+          <div role="button" tabIndex={0} onKeyDown className="savebtn" onClick={() => { this.setState({ writeReview: -Infinity }); this.handleSubmission(finalRate, reviewText, username); }}>Save</div>
+        </div>
+      );
+      actualStars = (
+        <div className="myStars">
+          <p>Rate This Recipe : </p>
+          <div
+            role="button"
+            tabIndex={0}
+            onKeyDown
+            className="starclicker"
+            onClick={() => {
+              this.setState({
+                starRate1: star,
+                starRate2: blankstar,
+                starRate3: blankstar,
+                starRate4: blankstar,
+                starRate5: blankstar,
+                finalRate: 1,
+              });
+            }}
+          >
+            <img
+              alt=""
+              src={starRate1}
+            />
+          </div>
+          <div
+            role="button"
+            tabIndex={0}
+            onKeyDown
+            className="starclicker2"
+            onClick={() => {
+              this.setState({
+                starRate1: star,
+                starRate2: star,
+                starRate3: blankstar,
+                starRate4: blankstar,
+                starRate5: blankstar,
+                finalRate: 2,
+              });
+            }}
+          >
+            <img
+              alt=""
+              src={starRate2}
+            />
+          </div>
+          <div
+            role="button"
+            tabIndex={0}
+            onKeyDown
+            className="starclicker3"
+            onClick={() => {
+              this.setState({
+                starRate1: star,
+                starRate2: star,
+                starRate3: star,
+                starRate4: blankstar,
+                starRate5: blankstar,
+                finalRate: 3,
+              });
+            }}
+          >
+            <img
+              alt=""
+              src={starRate3}
+            />
+          </div>
+          <div
+            role="button"
+            tabIndex={0}
+            onKeyDown
+            className="starclicker4"
+            onClick={() => {
+              this.setState({
+                starRate1: star,
+                starRate2: star,
+                starRate3: star,
+                starRate4: star,
+                starRate5: blankstar,
+                finalRate: 4,
+              });
+            }}
+          >
+            <img
+              alt=""
+              src={starRate4}
+            />
+          </div>
+          <div
+            role="button"
+            tabIndex={0}
+            onKeyDown
+            className="starclicker5"
+            onClick={() => {
+              this.setState({
+                starRate1: star,
+                starRate2: star,
+                starRate3: star,
+                starRate4: star,
+                starRate5: star,
+                finalRate: 5,
+              });
+            }}
+          >
+            <img
+              alt=""
+              src={starRate5}
+            />
+          </div>
+        </div>
+      );
     }
     let myModal;
-    if (this.state.modal && !this.state.login) {
-      myModal = <div className="modal">
-        <form>
+    if (modal && !login) {
+      myModal = (
+        <div className="modal">
+          <form>
+            <br />
+            <p>Sign In To Leave A Review</p>
+            <input
+              className="centerInput cI1"
+              style={styles}
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => this.handleUsername(e.target.value)}
+              onClick={() => {
+                this.setState({ styles: { color: 'black' } });
+              }}
+            />
+            <br />
+            <input
+              className="centerInput cI2"
+              style={styles}
+              type="text"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => this.handlePassword(e.target.value)}
+              onClick={() => {
+                this.setState({ styles: { color: 'black' } });
+              }}
+            />
+            <br />
+            <br />
+            <input
+              className="signIn"
+              type="submit"
+              value="Login"
+              onClick={(e) => {
+                e.preventDefault();
+                this.checkUser();
+              }}
+            />
+          </form>
           <br />
-          <p>Sign In To Leave A Review</p>
-          <input className="centerInput" style={this.state.styles} type='text' placeholder="Username" value={this.state.username} onChange={e => this.handleUsername(e.target.value)} onClick={() => {this.setState({ styles: {color: 'black'}
-          })}}></input>
+          {loginFail}
           <br />
-          <input className="centerInput" style={this.state.styles} type='text' placeholder="Password" value={this.state.password} onChange={e => this.handlePassword(e.target.value)} onClick={() => {this.setState({ styles: {color: 'black'}
-          })}}></input>
-          <br />
-          <br />
-          <input className="signIn" type='submit' value="Login" onClick={(e) => { e.preventDefault();
-            this.checkUser(); // userlogin
-            }}>
-          </input>
-        </form>
-        <br />
-        {loginFail}
-        <br />
-        <div className="pleaseSignUp">Please signup <a href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.103108807.635364393.1588887829-1653893722.1588887829#">HERE</a> if you need an account</div>
-      </div>
+          <div className="pleaseSignUp">
+            Please signup
+            <a href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.103108807.635364393.1588887829-1653893722.1588887829#">HERE</a>
+            {' '}
+            if you need an account
+          </div>
+        </div>
+      );
     }
-    for (let i = 0; i < this.state.myData.length; i++) {
-      if (this.state.myData[i].stars === 1) {
-        this.state.myData[i].stars = (
+    for (let i = 0; i < myData.length; i++) {
+      if (myData[i].stars === 1) {
+        myData[i].stars = (
           <div>
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.blankstar} alt={this.props.blankstar} />
-            <img src={this.props.blankstar} alt={this.props.blankstar} />
-            <img src={this.props.blankstar} alt={this.props.blankstar} />
-            <img src={this.props.blankstar} alt={this.props.blankstar} />
+            <img src={star} alt={star} />
+            <img src={blankstar} alt={blankstar} />
+            <img src={blankstar} alt={blankstar} />
+            <img src={blankstar} alt={blankstar} />
+            <img src={blankstar} alt={blankstar} />
           </div>
         );
-      } else if (this.state.myData[i].stars === 2) {
-        this.state.myData[i].stars = (
+      } else if (myData[i].stars === 2) {
+        myData[i].stars = (
           <div>
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.blankstar} alt={this.props.blankstar} />
-            <img src={this.props.blankstar} alt={this.props.blankstar} />
-            <img src={this.props.blankstar} alt={this.props.blankstar} />
+            <img src={star} alt={star} />
+            <img src={star} alt={star} />
+            <img src={blankstar} alt={blankstar} />
+            <img src={blankstar} alt={blankstar} />
+            <img src={blankstar} alt={blankstar} />
           </div>
         );
-      } else if (this.state.myData[i].stars === 3) {
-        this.state.myData[i].stars = (
+      } else if (myData[i].stars === 3) {
+        myData[i].stars = (
           <div>
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.blankstar} alt={this.props.blankstar} />
-            <img src={this.props.blankstar} alt={this.props.blankstar} />
+            <img src={star} alt={star} />
+            <img src={star} alt={star} />
+            <img src={star} alt={star} />
+            <img src={blankstar} alt={blankstar} />
+            <img src={blankstar} alt={blankstar} />
           </div>
         );
-      } else if (this.state.myData[i].stars === 4) {
-        this.state.myData[i].stars = (
+      } else if (myData[i].stars === 4) {
+        myData[i].stars = (
           <div>
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.blankstar} alt={this.props.blankstar} />
+            <img src={star} alt={star} />
+            <img src={star} alt={star} />
+            <img src={star} alt={star} />
+            <img src={star} alt={star} />
+            <img src={blankstar} alt={blankstar} />
           </div>
         );
-      } else if (this.state.myData[i].stars === 5) {
-        this.state.myData[i].stars = (
+      } else if (myData[i].stars === 5) {
+        myData[i].stars = (
           <div>
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.star} alt={this.props.star} />
-            <img src={this.props.star} alt={this.props.star} />
+            <img src={star} alt={star} />
+            <img src={star} alt={star} />
+            <img src={star} alt={star} />
+            <img src={star} alt={star} />
+            <img src={star} alt={star} />
           </div>
         );
       }
     }
     return (
       <div>
-      {myModal}
-      <div>
-
-        <div>REVIEWS</div>
-
-        {actualReviewTop}
-        <form>
-
-          <textarea onClick={() => { this.setState({ modal: true, writeReview: this.state.writeReview + 1})}} rows="8" placeholder="Write a review..." onChange={e => this.handleReview(e.target.value)}/>
-        </form>
-        {actualStars}
-        {actualReviewBottom}
-
-        <div className="review">
-
-          {this.state.myData.map((review, index) => (
-            <div key={index}>
-              <span className="stars">
-                {review.stars}
-              </span>
-              <br />
-              <span className="textreview">
-                {review.text}
-              </span>
-              <br />
-              <span className="userInfo">
-                <span>
-                  {' '}
-                  {review.name}
-                  {' '}
+        {myModal}
+        <div>
+          <div>REVIEWS</div>
+          {actualReviewTop}
+          <form>
+            <textarea className="texta" onClick={() => { this.setState({ modal: true, writeReview: writeReview + 1 }); }} rows="8" placeholder="Write a review..." onChange={(e) => this.handleReview(e.target.value)} />
+          </form>
+          <br />
+          {actualStars}
+          <br />
+          {actualReviewBottom}
+          <div className="review">
+            {myData.map((review, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <div key={index}>
+                <span className="stars">
+                  {review.stars}
                 </span>
-                <span className="userMargin">  &bull;</span>
-                <span className="userMargin">
-                  {' '}
-                  {review.location}
+                <br />
+                <span className="textreview">
+                  {review.text}
                 </span>
-                <span className="userMargin">  &bull;</span>
-                <span className="userMargin">
-                  {' '}
-                  {review.date}
+                <br />
+                <span className="userInfo">
+                  <span>
+                    {review.name}
+                  </span>
+                  <span className="userMargin">  &bull;</span>
+                  <span className="userMargin">
+                    {review.location}
+                  </span>
+                  <span className="userMargin">  &bull;</span>
+                  <span className="userMargin">
+                    {review.date}
+                  </span>
                 </span>
-              </span>
-              <hr />
-            </div>
-          ))}
+                <hr />
+              </div>
+            ))}
+          </div>
+          <div role="button" tabIndex={0} className="moreButton" onClick={() => { this.changeData(); }} onKeyDown={() => { this.changeData(); }}>View More</div>
         </div>
-        <div role="button" tabIndex={0} className="moreButton" onClick={() => { this.changeData(); }} onKeyDown={() => {this.changeData()}}>View More</div>
-      </div>
       </div>
     );
   }
@@ -295,10 +433,11 @@ class Reviews extends React.Component {
 export default Reviews;
 
 Reviews.propTypes = {
-  reviewData: PropTypes.arrayOf(PropTypes.object),
-  total40: PropTypes.arrayOf(PropTypes.object),
-  total60: PropTypes.arrayOf(PropTypes.object),
-  total80: PropTypes.arrayOf(PropTypes.object),
-  total100: PropTypes.arrayOf(PropTypes.object),
-  total120: PropTypes.arrayOf(PropTypes.object),
+  reviewData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  total40: PropTypes.arrayOf(PropTypes.object).isRequired,
+  total60: PropTypes.arrayOf(PropTypes.object).isRequired,
+  total80: PropTypes.arrayOf(PropTypes.object).isRequired,
+  total100: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loginLogout: PropTypes.func.isRequired,
+  url: PropTypes.string.isRequired,
 };

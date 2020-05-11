@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -22,7 +21,7 @@ const Description = ({
       </p>
       <p className="smallText">{descript}</p>
     </div>
-    <div className="printSection"  onClick={() => { window.print(); return false; }}>
+    <div role="button" tabIndex={0} onKeyPress className="printSection" onClick={() => { window.print(); return false; }}>
       <img className="print" src={print} alt={print} />
       <p>PRINT</p>
     </div>
@@ -32,11 +31,11 @@ const Description = ({
 export default Description;
 
 Description.propTypes = {
-  fb: PropTypes.string,
-  pin: PropTypes.string,
-  twitter: PropTypes.string,
-  email: PropTypes.string,
-  print: PropTypes.string,
-  makesNum: PropTypes.number,
-  descript: PropTypes.string,
+  fb: PropTypes.string.isRequired,
+  pin: PropTypes.string.isRequired,
+  twitter: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  print: PropTypes.string.isRequired,
+  makesNum: PropTypes.number.isRequired,
+  descript: PropTypes.string.isRequired,
 };
