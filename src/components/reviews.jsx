@@ -105,13 +105,13 @@ class Reviews extends React.Component {
 
   handleSubmission(sta, txt, nme) {
     const { url } = this.props;
-    axios.post(`${url}reviews`, {
+    axios.post(`/reviews${url}`, {
       stars: sta,
       text: `${txt}`,
       name: `${nme}`,
     })
       .then(() => {
-        axios.get(`${url}reviews`)
+        axios.get(`/reviews${url}`)
           .then((result) => result.data)
           .then((data) => {
             this.setState({
@@ -321,7 +321,7 @@ class Reviews extends React.Component {
           <br />
           <div className="pleaseSignUp">
             Please signup
-            <a href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.103108807.635364393.1588887829-1653893722.1588887829#">HERE</a>
+            <a href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.103108807.635364393.1588887829-1653893722.1588887829#"> HERE</a>
             {' '}
             if you need an account
           </div>
