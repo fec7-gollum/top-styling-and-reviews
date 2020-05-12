@@ -21,7 +21,7 @@ const Description = ({
       </p>
       <p className="smallText">{descript}</p>
     </div>
-    <div role="button" tabIndex={0} onKeyPress className="printSection" onClick={() => { window.print(); return false; }}>
+    <div role="button" tabIndex={0} onKeyPress={() => {}} className="printSection" onClick={() => { window.print(); return false; }}>
       <img className="print" src={print} alt={print} />
       <p>PRINT</p>
     </div>

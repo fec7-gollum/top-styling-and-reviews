@@ -9,7 +9,7 @@ CREATE TABLE Recipes (
   recipeName varchar(255) NOT NULL,
   thumbs int NOT NULL,
   makes int NOT NULL,
-  description varchar(500) NOT NULL,
+  description varchar(800) NOT NULL,
   photoID int NOT NULL,
   PRIMARY KEY (recipeID)
 );
@@ -19,9 +19,9 @@ CREATE TABLE Photos (
   image varchar(255) NOT NULL,
   photoBy varchar(100) NOT NULL,
   recipeID INT NOT NULL,
-  PRIMARY KEY (photoID),
-  FOREIGN KEY (recipeID) REFERENCES Recipes(recipeID)
-  ON DELETE CASCADE
+  PRIMARY KEY (photoID)
+  -- FOREIGN KEY (recipeID) REFERENCES Recipes(recipeID)
+  -- ON DELETE CASCADE
 );
 
 CREATE TABLE Reviews (
@@ -33,8 +33,8 @@ CREATE TABLE Reviews (
   location varchar(100) NOT NULL,
   date varchar(100) NOT NULL,
   comboID INT NOT NULL,
-  CONSTRAINT comboID_Ck CHECK (comboID BETWEEN 1 AND 100),
-  FOREIGN KEY (comboID) REFERENCES Recipes(recipeID),
+  -- CONSTRAINT comboID_Ck CHECK (comboID BETWEEN 1 AND 100),
+  -- FOREIGN KEY (comboID) REFERENCES Recipes(recipeID),
   PRIMARY KEY (reviewID)
 );
 
