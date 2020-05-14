@@ -1,0 +1,378 @@
+.topRow {
+  padding-top: 1vh;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 1vh;
+  border-bottom: 1px rgb(184, 184, 184) solid;
+  position: fixed;
+  width:100vw;
+  height: 4vh;
+  margin-top: -1vh;
+  background-color: white;
+}
+
+.topIcons {
+  height: 3vh;
+  margin-right: 2vw;
+  margin-left: 2vw;
+}
+
+.foodie {
+  justify-self: center;
+  font-size: 1.4rem;
+  font-family: 'Josefin Sans', sans-serif;
+  padding-top: .75vh;
+}
+
+.right {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.right a {
+  text-decoration: none;
+  padding-top: .75vh;
+}
+
+.right a:hover {
+  text-decoration: underline;
+}
+
+.recipes {
+  justify-self: right;
+  font-size: .8rem;
+  color: rgb(150, 150, 150);
+}
+
+.login {
+  margin-left: 2vw;
+  font-size: .8rem;
+  font-weight: 600;
+  color: rgb(46, 46, 46);
+}
+
+.search {
+  justify-self: right;
+  margin-left: 8vw;
+}
+
+.chef {
+  height:7vh;
+  margin-top: 6vh;
+}
+
+.titleSection {
+  margin-top: 5vh;
+  width: 100vw;
+  text-align: center;
+}
+
+.recipeTitle {
+  font-family: 'Josefin Sans', sans-serif;
+  margin-top: 5vh;
+  font-size: 4rem;
+}
+
+.ratings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.percent {
+  margin-left: 15vw;
+  display: inline-flex;
+}
+
+.thumbsUp {
+  height:3vh;
+  margin-top: -1vh;
+  margin-left: 1vw;
+}
+
+.date {
+  margin-left: 15vw;
+}
+
+.recipePhoto {
+  width:98vw;
+  margin-left: -1vw;
+}
+
+.photoCredit {
+  margin-left: 50vw;
+  font-family: 'Josefin Sans', sans-serif;
+  color: rgb(158, 158, 158);
+}
+
+.descriptionSection {
+  padding-bottom: 20vh;
+  border-bottom: black 5px solid;
+}
+
+.social img {
+  height:4vh;
+  margin-left: 2vw;
+  margin-top: 3vh;
+}
+
+.social img:hover {
+  cursor: pointer;
+  transform: scale(1.6);
+  transition: all .3s ease-in-out;
+}
+
+.briefDescription {
+  text-align: center;
+  margin-top: -20vh;
+}
+
+.smallText {
+  width:40vw;
+  margin-left: 29vw;
+}
+
+.printSection {
+  float:right;
+  margin-right: 10vw;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.printSection p {
+  margin-top: 11vh;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.print {
+  height:4vh;
+  margin-right: 1vw;
+  margin-top: 10vh;
+}
+
+.ReviewModule {
+  margin-top: 40vh;
+  margin-left: 10vw;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width:50vw;
+  border-top: black 5px solid;
+  padding-top: 5vh;
+}
+
+textarea {
+  margin-top: 5vh;
+  resize: none;
+  padding:1rem;
+  width: 48vw;
+  font-size: 1rem;
+}
+
+.stars {
+  margin-left: -.5vw;
+}
+
+.stars img {
+  margin-top: 5vh;
+  height:2.5vh;
+  margin-left: .5vw;
+  margin-bottom: 4vh;
+}
+
+.textreview {
+  font-weight: lighter;
+}
+
+.userInfo {
+  margin-top: 3vh;
+  display: inline-flex;
+  font-size: .8rem;
+  font-weight: lighter;
+  padding-bottom: 4vh;
+}
+
+.userMargin {
+  margin-left: 1vw;
+}
+
+.moreButton {
+  width:10vw;
+  background-color: rgb(228, 228, 253);
+  text-align: center;
+  padding: 1.4rem;
+  margin-top: 5vh;
+  margin-left: 18vw;
+  font-size: 1rem;
+  margin-bottom: 20vh;
+}
+
+.moreButton:hover {
+  background-color: rgb(110, 77, 141);
+  color: white;
+  cursor: pointer;
+}
+
+.modal {
+  height:100vh;
+  width:99vw;
+  background-color: rgb(253, 251, 249);
+  z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 1px black;
+  text-align: center;
+}
+
+
+.searchModal {
+    height:100vh;
+    width:99vw;
+    background-color: rgb(253, 251, 249);
+    z-index: 2;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 1px black;
+    text-align: center;
+}
+
+#makeAgain {
+  margin-top: 10vh;
+}
+
+#yes {
+  margin-left: 1vw;
+}
+
+#no {
+  margin-left: 1vw;
+}
+
+.labels {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+#thumbUp {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  height: 3vh;
+}
+
+#thumbDown {
+  transform: rotate(-180deg);
+  height: 3vh;
+  transform-origin: center;
+  margin-left: 1vw;
+}
+
+.bottomButtons {
+  display: inline-flex;
+}
+
+.cancelbtn {
+  width:7vw;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 1.2rem;
+  margin-top: 5vh;
+  font-size: 1rem;
+  margin-bottom: 10vh;
+  border: 1px solid black;
+}
+
+.savebtn {
+  width:7vw;
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 1.2rem;
+  margin-top: 5vh;
+  font-size: 1rem;
+  margin-bottom: 10vh;
+  color: white;
+  margin-left: 2vw;
+}
+
+.myStars {
+  display: inline-flex;
+}
+
+.myStars img {
+  margin-left: 1vw;
+}
+
+.fail {
+  position: absolute;
+  width: 99vw;
+  color: red;
+}
+
+.pleaseSignUp {
+  margin-top: 4vh;
+  position: absolute;
+  width: 99vw;
+}
+
+.pleaseSignUp a {
+  text-decoration: none;
+  color: rgb(110, 77, 141);
+}
+
+.centerInput {
+  padding: 1vh;
+  margin-top: .25vh;
+  text-align: center;
+}
+
+.signIn {
+  width:10vw;
+}
+
+.searching {
+  position: absolute;
+  margin-left: -22%;
+  margin-top: 20vh;
+}
+
+.findit {
+  position: absolute;
+  margin-top: 36vh;
+  margin-left: 18vw;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-size: 1rem;
+  padding: .6rem;
+  width: 8vw;
+}
+
+.closemodal img {
+  float:right;
+  margin-right: 2vw;
+  color: white;
+  background-color: black;
+  padding:1rem;
+  font-family: monospace;
+  height:3vh;
+  margin-top: 2vh;
+}
+
+#eyes{
+  position:absolute;
+  height:1vh;
+  margin-left: 48.4%;
+  margin-top: 1.23%;
+}
+
+#eyes2{
+  position:absolute;
+  height:1vh;
+  margin-left: 49.55%;
+  margin-top: 1.23%;
+}
