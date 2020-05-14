@@ -6,6 +6,183 @@ import thumbsUp from '../../public/images/thumbs.svg';
 import blankstar from '../../public/images/blankstar.svg';
 import star from '../../public/images/star.svg';
 import users from '../../mockUsers';
+import styled from 'styled-components';
+
+const Fail = styled.div`
+  position: absolute;
+  width: 99vw;
+  color: red;
+`;
+
+const MakeAgain = styled.p`
+  margin-top: 10vh;
+  margin-left: 10vw;
+`;
+
+const Labels = styled.label`
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin-left: 10vw;
+`;
+
+const ThumbUp = styled.img`
+  margin-left: 1vw;
+  margin-right: 1vw;
+  height: 3vh;
+`;
+
+const ThumbDown = styled.img`
+  transform: rotate(-180deg);
+  height: 3vh;
+  transform-origin: center;
+  margin-left: 1vw;
+`;
+
+const BottomButtons = styled.div`
+  display: inline-flex;
+`;
+
+const Cancelbtn = styled.div`
+  width:7vw;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 1.2rem;
+  margin-top: 5vh;
+  font-size: 1rem;
+  margin-bottom: 10vh;
+  border: 1px solid black;
+  margin-left: 10vw;
+`;
+
+const Savebtn = styled.div`
+  width:7vw;
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 1.2rem;
+  margin-top: 5vh;
+  font-size: 1rem;
+  margin-bottom: 10vh;
+  color: white;
+  margin-left: 2vw;
+`;
+
+const MyStars = styled.div`
+  display: inline-flex;
+`;
+
+const Starclicker = styled.div`
+  margin-left: 1vw;
+`;
+
+const Starclicker2 = styled.div`
+  margin-left: 1vw;
+`;
+
+const Starclicker3 = styled.div`
+  margin-left: 1vw;
+`;
+
+const Starclicker4 = styled.div`
+  margin-left: 1vw;
+`;
+
+const Starclicker5 = styled.div`
+  margin-left: 1vw;
+`;
+
+const Modal = styled.div`
+  height:100vh;
+  width:99vw;
+  background-color: rgb(253, 251, 249);
+  z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 1px black;
+  text-align: center;
+`;
+
+const PleaseSignUp = styled.div`
+  margin-top: 4vh;
+  position: absolute;
+  width: 99vw;
+`;
+
+const TextA = styled.textarea`
+  margin-top: 5vh;
+  resize: none;
+  padding:1rem;
+  width: 48vw;
+  font-size: 1rem;
+  margin-left: 10vw;
+`;
+
+const Review = styled.div`
+  margin-top: 20vh;
+  margin-left: 10vw;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width:50vw;
+  border-top: black 5px solid;
+  padding-top: 5vh;
+`;
+
+const Stars = styled.span`
+  margin-left: -.5vw;
+`;
+
+const Textreview = styled.span`
+  font-weight: lighter;
+`;
+
+const UserInfo = styled.span`
+  margin-top: 3vh;
+  display: inline-flex;
+  font-size: .8rem;
+  font-weight: lighter;
+  padding-bottom: 4vh;
+`;
+
+const UserMargin = styled.span`
+  margin-left: 1vw;
+`;
+
+const MoreButton = styled.div`
+  width:10vw;
+  background-color: rgb(228, 228, 253);
+  text-align: center;
+  padding: 1.4rem;
+  margin-top: 5vh;
+  margin-left: 18vw;
+  font-size: 1rem;
+  margin-bottom: 20vh;
+  &:hover {
+    background-color: rgb(110, 77, 141);
+    color: white;
+    cursor: pointer;
+  }
+`;
+
+const CenterInput = styled.input`
+  padding: 1vh;
+  margin-top: .25vh;
+  text-align: center;
+`;
+
+const SignIn = styled.input`
+  width:10vw;
+`;
+
+const ReviewTitle = styled.div`
+  margin-left:10vw;
+  margin-top:10vh;
+`;
+
+const RateRecipe = styled.p`
+  margin-left:10vw;
+`;
 
 class Reviews extends React.Component {
   constructor({
@@ -105,13 +282,21 @@ class Reviews extends React.Component {
 
   handleSubmission(sta, txt, nme) {
     const { url } = this.props;
+<<<<<<< HEAD
+    axios.post(`http://localhost:4000/reviews${url}`, {
+=======
     axios.post(`/reviews${url}`, {
+>>>>>>> 80650805701afe27c58afb05fecde01607f78472
       stars: sta,
       text: `${txt}`,
       name: `${nme}`,
     })
       .then(() => {
+<<<<<<< HEAD
+        axios.get(`http://localhost:4000/reviews${url}`)
+=======
         axios.get(`/reviews${url}`)
+>>>>>>> 80650805701afe27c58afb05fecde01607f78472
           .then((result) => result.data)
           .then((data) => {
             this.setState({
@@ -136,41 +321,41 @@ class Reviews extends React.Component {
       modal, login, styles, password,
     } = this.state;
     if (incorrect === true) {
-      loginFail = <div className="fail">Incorrect Username or Password</div>;
+      loginFail = <Fail>Incorrect Username or Password</Fail>;
     }
     if (writeReview >= 2) {
       // eslint-disable-next-line no-console
       console.log(again);
       actualReviewTop = (
         <div>
-          <p id="makeAgain">Would You Make This Again?</p>
+          <MakeAgain>Would You Make This Again?</MakeAgain>
           <br />
-          <label className="labels" htmlFor="yes">
+          <Labels htmlFor="yes">
             YES
             <input type="radio" id="yes" name="again" onClick={() => { this.setState({ again: 'yes' }); }} />
-            <img id="thumbUp" alt="" src={thumbsUp} />
-          </label>
-          <label className="labels" htmlFor="no">
+            <ThumbUp alt="" src={thumbsUp} />
+          </Labels>
+          <Labels htmlFor="no">
             NO
             <input type="radio" id="no" name="again" onClick={() => { this.setState({ again: 'no' }); }} />
-          </label>
-          <img id="thumbDown" alt="" src={thumbsUp} />
+          </Labels>
+          <ThumbDown alt="" src={thumbsUp} />
         </div>
       );
       actualReviewBottom = (
-        <div className="bottomButtons">
-          <div role="button" tabIndex={0} onKeyDown className="cancelbtn" onClick={() => { this.setState({ writeReview: 1 }); }}>Cancel</div>
-          <div role="button" tabIndex={0} onKeyDown className="savebtn" onClick={() => { this.setState({ writeReview: -Infinity }); this.handleSubmission(finalRate, reviewText, username); }}>Save</div>
-        </div>
+        <BottomButtons>
+          <Cancelbtn role="button" tabIndex={0} onKeyDown  onClick={() => { this.setState({ writeReview: 1 }); }}>Cancel</Cancelbtn>
+          <Savebtn role="button" tabIndex={0} onKeyDown onClick={() => { this.setState({ writeReview: -Infinity }); this.handleSubmission(finalRate, reviewText, username); }}>Save</Savebtn>
+        </BottomButtons>
       );
       actualStars = (
-        <div className="myStars">
-          <p>Rate This Recipe : </p>
-          <div
+        <MyStars>
+          <RateRecipe>Rate This Recipe : </RateRecipe>
+          <Starclicker
             role="button"
             tabIndex={0}
             onKeyDown
-            className="starclicker"
+
             onClick={() => {
               this.setState({
                 starRate1: star,
@@ -186,12 +371,11 @@ class Reviews extends React.Component {
               alt=""
               src={starRate1}
             />
-          </div>
-          <div
+          </Starclicker>
+          <Starclicker2
             role="button"
             tabIndex={0}
             onKeyDown
-            className="starclicker2"
             onClick={() => {
               this.setState({
                 starRate1: star,
@@ -207,12 +391,11 @@ class Reviews extends React.Component {
               alt=""
               src={starRate2}
             />
-          </div>
-          <div
+          </Starclicker2>
+          <Starclicker3
             role="button"
             tabIndex={0}
             onKeyDown
-            className="starclicker3"
             onClick={() => {
               this.setState({
                 starRate1: star,
@@ -228,12 +411,11 @@ class Reviews extends React.Component {
               alt=""
               src={starRate3}
             />
-          </div>
-          <div
+          </Starclicker3>
+          <Starclicker4
             role="button"
             tabIndex={0}
             onKeyDown
-            className="starclicker4"
             onClick={() => {
               this.setState({
                 starRate1: star,
@@ -249,12 +431,11 @@ class Reviews extends React.Component {
               alt=""
               src={starRate4}
             />
-          </div>
-          <div
+          </Starclicker4>
+          <Starclicker5
             role="button"
             tabIndex={0}
             onKeyDown
-            className="starclicker5"
             onClick={() => {
               this.setState({
                 starRate1: star,
@@ -270,19 +451,18 @@ class Reviews extends React.Component {
               alt=""
               src={starRate5}
             />
-          </div>
-        </div>
+          </Starclicker5>
+        </MyStars>
       );
     }
     let myModal;
     if (modal && !login) {
       myModal = (
-        <div className="modal">
+        <Modal>
           <form>
             <br />
             <p>Sign In To Leave A Review</p>
-            <input
-              className="centerInput cI1"
+            <CenterInput
               style={styles}
               type="text"
               placeholder="Username"
@@ -293,8 +473,7 @@ class Reviews extends React.Component {
               }}
             />
             <br />
-            <input
-              className="centerInput cI2"
+            <CenterInput
               style={styles}
               type="text"
               placeholder="Password"
@@ -306,8 +485,7 @@ class Reviews extends React.Component {
             />
             <br />
             <br />
-            <input
-              className="signIn"
+            <SignIn
               type="submit"
               value="Login"
               onClick={(e) => {
@@ -319,13 +497,19 @@ class Reviews extends React.Component {
           <br />
           {loginFail}
           <br />
-          <div className="pleaseSignUp">
+          <PleaseSignUp>
             Please signup
             <a href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.103108807.635364393.1588887829-1653893722.1588887829#"> HERE</a>
+<<<<<<< HEAD
+            {" "}if you need an account
+          </PleaseSignUp>
+        </Modal>
+=======
             {' '}
             if you need an account
           </div>
         </div>
+>>>>>>> 80650805701afe27c58afb05fecde01607f78472
       );
     }
     for (let i = 0; i < myData.length; i++) {
@@ -385,45 +569,45 @@ class Reviews extends React.Component {
       <div>
         {myModal}
         <div>
-          <div>REVIEWS</div>
+          <ReviewTitle>REVIEWS</ReviewTitle>
           {actualReviewTop}
           <form>
-            <textarea className="texta" onClick={() => { this.setState({ modal: true, writeReview: writeReview + 1 }); }} rows="8" placeholder="Write a review..." onChange={(e) => this.handleReview(e.target.value)} />
+            <TextA onClick={() => { this.setState({ modal: true, writeReview: writeReview + 1 }); }} rows="8" placeholder="Write a review..." onChange={(e) => this.handleReview(e.target.value)} />
           </form>
           <br />
           {actualStars}
           <br />
           {actualReviewBottom}
-          <div className="review">
+          <Review>
             {myData.map((review, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <div key={index}>
-                <span className="stars">
+                <Stars>
                   {review.stars}
-                </span>
+                </Stars>
                 <br />
-                <span className="textreview">
+                <Textreview>
                   {review.text}
-                </span>
+                </Textreview>
                 <br />
-                <span className="userInfo">
+                <UserInfo>
                   <span>
                     {review.name}
                   </span>
-                  <span className="userMargin">  &bull;</span>
-                  <span className="userMargin">
+                  <UserMargin>  &bull;</UserMargin>
+                  <UserMargin>
                     {review.location}
-                  </span>
-                  <span className="userMargin">  &bull;</span>
-                  <span className="userMargin">
+                  </UserMargin>
+                  <UserMargin>  &bull;</UserMargin>
+                  <UserMargin>
                     {review.date}
-                  </span>
-                </span>
+                  </UserMargin>
+                </UserInfo>
                 <hr />
               </div>
             ))}
-          </div>
-          <div role="button" tabIndex={0} className="moreButton" onClick={() => { this.changeData(); }} onKeyDown={() => { this.changeData(); }}>View More</div>
+          </Review>
+          <MoreButton role="button" tabIndex={0} onClick={() => { this.changeData(); }} onKeyDown={() => { this.changeData(); }}>View More</MoreButton>
         </div>
       </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 import TopBar from './topbar';
 import Title from './title';
@@ -16,6 +17,7 @@ import printer from '../../public/images/printer.svg';
 import thumbsUp from '../../public/images/thumbs.svg';
 import star from '../../public/images/star.svg';
 import blankstar from '../../public/images/blankstar.svg';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -44,7 +46,11 @@ class App extends React.Component {
   getOne() {
     const { url } = this.state;
     console.log(url);
+<<<<<<< HEAD
+    axios.get(`http://localhost:4000/recipes${url}`)
+=======
     axios.get(`/recipes${url}`)
+>>>>>>> 80650805701afe27c58afb05fecde01607f78472
       .then((result) => result.data)
       .then((data) => {
         this.setState({
@@ -55,7 +61,11 @@ class App extends React.Component {
 
   getBottom() {
     const { url } = this.state;
+<<<<<<< HEAD
+    axios.get(`http://localhost:4000/reviews${url}`)
+=======
     axios.get(`/reviews${url}`)
+>>>>>>> 80650805701afe27c58afb05fecde01607f78472
       .then((result) => result.data)
       .then((data) => {
         data = data || [];
