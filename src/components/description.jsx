@@ -71,6 +71,7 @@ const Description = ({
       <MakesNum>
         SERVINGS:
         {makesNum}
+<<<<<<< HEAD
       </MakesNum>
       <SmallText>{descript}</SmallText>
     </BriefDescription>
@@ -79,6 +80,16 @@ const Description = ({
       <PrintText>PRINT</PrintText>
     </PrintSection>
   </DescriptionSection>
+=======
+      </p>
+      <p className="smallText">{descript}</p>
+    </div>
+    <div role="button" tabIndex={0} onKeyPress={() => {}} className="printSection" onClick={() => { window.print(); return false; }}>
+      <img className="print" src={print} alt={print} />
+      <p>PRINT</p>
+    </div>
+  </div>
+>>>>>>> 80650805701afe27c58afb05fecde01607f78472
 );
 
 export default Description;

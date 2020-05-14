@@ -150,15 +150,22 @@ class TopBar extends React.Component {
     let mySearch;
     if (textArea) {
       mySearch = (
+<<<<<<< HEAD
         <SearchModal>
           <Closemodal role="button" tabIndex={0} onKeyPress={() => {}} onClick={() => { this.setState({ textArea: false }); }}><CloseX alt="true" src={x} /></Closemodal>
           <Searching placeholder="Search Recipes..." onChange={(e) => this.handleSearch(e.target.value)} />
+=======
+        <div className="searchModal">
+          <div role="button" tabIndex={0} onKeyPress={() => {}} className="closemodal" onClick={() => { this.setState({ textArea: false }); }}><img alt="true" src={x} /></div>
+          <textarea className="searching" placeholder="Search Recipes..." onChange={(e) => this.handleSearch(e.target.value)} />
+>>>>>>> 80650805701afe27c58afb05fecde01607f78472
           <br />
           <Findit href={fullsearch}>Find It</Findit>
         </SearchModal>
       );
     }
     return (
+<<<<<<< HEAD
       <TopRow>
         <Eyes alt="true" src="https://img.pngio.com/dot-png-images-free-download-black-dot-png-3500_3500.png" />
         <Eyes2 alt="true" src="https://img.pngio.com/dot-png-images-free-download-black-dot-png-3500_3500.png" />
@@ -168,6 +175,17 @@ class TopBar extends React.Component {
           <Recipes href="https://www.bonRecipesppetit.com/recipes">RECIPES</Recipes>
           <Login href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.195360363.635364393.1588887829-1653893722.1588887829" className="login">{login}</Login>
           <div role="button" tabIndex={0} onKeyPress={() => {}} onClick={() => { this.setState({ textArea: true }); }}><Search src={search} alt={search} /></div>
+=======
+      <div className="topRow">
+        <img alt="true" id="eyes" src="https://img.pngio.com/dot-png-images-free-download-black-dot-png-3500_3500.png" />
+        <img alt="true" id="eyes2" src="https://img.pngio.com/dot-png-images-free-download-black-dot-png-3500_3500.png" />
+        <img className="topIcons" src={menu} alt={menu} />
+        <span className="foodie">FOODIE</span>
+        <span className="right">
+          <a href="https://www.bonappetit.com/recipes" className="recipes">RECIPES</a>
+          <a href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.195360363.635364393.1588887829-1653893722.1588887829" className="login">{login}</a>
+          <div role="button" tabIndex={0} onKeyPress={() => {}} onClick={() => { this.setState({ textArea: true }); }}><img className="topIcons search" src={search} alt={search} /></div>
+>>>>>>> 80650805701afe27c58afb05fecde01607f78472
           {mySearch}
         </Right>
       </TopRow>

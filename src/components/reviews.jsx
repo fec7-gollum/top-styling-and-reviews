@@ -282,13 +282,21 @@ class Reviews extends React.Component {
 
   handleSubmission(sta, txt, nme) {
     const { url } = this.props;
+<<<<<<< HEAD
     axios.post(`http://localhost:4000/reviews${url}`, {
+=======
+    axios.post(`/reviews${url}`, {
+>>>>>>> 80650805701afe27c58afb05fecde01607f78472
       stars: sta,
       text: `${txt}`,
       name: `${nme}`,
     })
       .then(() => {
+<<<<<<< HEAD
         axios.get(`http://localhost:4000/reviews${url}`)
+=======
+        axios.get(`/reviews${url}`)
+>>>>>>> 80650805701afe27c58afb05fecde01607f78472
           .then((result) => result.data)
           .then((data) => {
             this.setState({
@@ -492,9 +500,16 @@ class Reviews extends React.Component {
           <PleaseSignUp>
             Please signup
             <a href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.103108807.635364393.1588887829-1653893722.1588887829#"> HERE</a>
+<<<<<<< HEAD
             {" "}if you need an account
           </PleaseSignUp>
         </Modal>
+=======
+            {' '}
+            if you need an account
+          </div>
+        </div>
+>>>>>>> 80650805701afe27c58afb05fecde01607f78472
       );
     }
     for (let i = 0; i < myData.length; i++) {
