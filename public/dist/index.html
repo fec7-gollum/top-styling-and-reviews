@@ -14,12 +14,8 @@
 
 <body>
 
+<div id="top"></div>
 <div id="reviews"></div>
-<<<<<<< HEAD
-
-<script type="text/javascript" src="./bundle.js"></script>
-=======
-
 
 <script type="text/javascript" src="./bundle.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -27,29 +23,49 @@
 <script>
     $(document).mousemove(function(e){
     // console.log(e.pageX);
+    // console.log(e.pageY);
+    if (e.pageY < 100) {
+      $('.sc-AxirZ').css('margin-top', '6px');
+      $('.sc-AxiKw').css('margin-top', '6px');
+    }
+    if (e.pageY > 100 && e.pageY < 300) {
+      $('.sc-AxirZ').css('margin-top', '7px');
+      $('.sc-AxiKw').css('margin-top', '7px');
+    }
+    if (e.pageY > 300 && e.pageY < 600) {
+      $('.sc-AxirZ').css('margin-top', '8px');
+      $('.sc-AxiKw').css('margin-top', '8px');
+    }
+    if (e.pageY > 600) {
+      $('.sc-AxirZ').css('margin-top', '9px');
+      $('.sc-AxiKw').css('margin-top', '9px');
+    }
+    if (e.pageY > 100 && e.pageY < 300) {
+      $('.sc-AxirZ').css('margin-top', '7px');
+      $('.sc-AxiKw').css('margin-top', '7px');
+    }
     if (e.pageX > 0 && e.pageX < 300) {
-      $('#eyes').css('margin-left', '48.2%');
-      $('#eyes2').css('margin-left', '49.35%');
+      $('.sc-AxirZ').css('margin-left', '-72px');
+      $('.sc-AxiKw').css('margin-left', '-54px');
     }
     if (e.pageX > 300 && e.pageX < 600) {
-      $('#eyes').css('margin-left', '48.3%');
-      $('#eyes2').css('margin-left', '49.45%');
+      $('.sc-AxirZ').css('margin-left', '-70px');
+      $('.sc-AxiKw').css('margin-left', '-52px');
     }
     if (e.pageX > 600 && e.pageX < 900) {
-      $('#eyes').css('margin-left', '48.4%');
-      $('#eyes2').css('margin-left', '49.55%');
+      $('.sc-AxirZ').css('margin-left', '-68px');
+      $('.sc-AxiKw').css('margin-left', '-50px');
     }
     if (e.pageX > 900 && e.pageX < 1200) {
-      $('#eyes').css('margin-left', '48.5%');
-      $('#eyes2').css('margin-left', '49.65%');
+      $('.sc-AxirZ').css('margin-left', '-66px');
+      $('.sc-AxiKw').css('margin-left', '-48px');
     }
     if (e.pageX > 1200) {
-      $('#eyes').css('margin-left', '48.6%');
-      $('#eyes2').css('margin-left', '49.75%');
+      $('.sc-AxirZ').css('margin-left', '-64px');
+      $('.sc-AxiKw').css('margin-left', '-46px');
     }
   });
 </script>
->>>>>>> 80650805701afe27c58afb05fecde01607f78472
 
 </body>
 

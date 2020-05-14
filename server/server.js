@@ -11,13 +11,10 @@ const server = express();
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
-<<<<<<< HEAD
 server.use(cors());
 
 server.use((req, res, next) => {res.set('Access-Control-Allow-Origin', '*');  next();});
 
-=======
->>>>>>> 80650805701afe27c58afb05fecde01607f78472
 server.use('/:id', express.static(path.join(__dirname, '/../public/dist')));
 
 // Server Requests
