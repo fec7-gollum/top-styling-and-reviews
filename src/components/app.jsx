@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import TopBar from './topbar';
 import Title from './title';
 import Description from './description';
-import Reviews from './reviews';
+// import Reviews from './reviews';
 import menu from '../../public/images/menu.svg';
 import search from '../../public/images/search.svg';
 import chef from '../../public/images/chef.svg';
@@ -24,33 +24,24 @@ class App extends React.Component {
     super(props);
     this.state = {
       topdata: undefined,
-      bottomdata: undefined,
-      total40: undefined,
-      total60: undefined,
-      total80: undefined,
-      total100: undefined,
       login: 'LOGIN',
       url: window.location.pathname,
     };
 
     this.getOne = this.getOne.bind(this);
-    this.getBottom = this.getBottom.bind(this);
-    this.updateLogin = this.updateLogin.bind(this);
+    // this.getBottom = this.getBottom.bind(this);
+    // this.updateLogin = this.updateLogin.bind(this);
   }
 
   componentDidMount() {
     this.getOne();
-    this.getBottom();
+    // this.getBottom();
   }
 
   getOne() {
     const { url } = this.state;
     console.log(url);
-<<<<<<< HEAD
     axios.get(`http://localhost:4000/recipes${url}`)
-=======
-    axios.get(`/recipes${url}`)
->>>>>>> 80650805701afe27c58afb05fecde01607f78472
       .then((result) => result.data)
       .then((data) => {
         this.setState({
@@ -59,39 +50,35 @@ class App extends React.Component {
       });
   }
 
-  getBottom() {
-    const { url } = this.state;
-<<<<<<< HEAD
-    axios.get(`http://localhost:4000/reviews${url}`)
-=======
-    axios.get(`/reviews${url}`)
->>>>>>> 80650805701afe27c58afb05fecde01607f78472
-      .then((result) => result.data)
-      .then((data) => {
-        data = data || [];
-        this.setState({
-          bottomdata: data.slice(-20).reverse(),
-          total40: data.slice(-40).reverse(),
-          total60: data.slice(-60).reverse(),
-          total80: data.slice(-80).reverse(),
-          total100: data.slice(-100).reverse(),
-        });
-      });
-  }
+  // getBottom() {
+  //   const { url } = this.state;
+  //   axios.get(`http://localhost:4000/reviews${url}`)
+  //     .then((result) => result.data)
+  //     .then((data) => {
+  //       data = data || [];
+  //       this.setState({
+  //         bottomdata: data.slice(-20).reverse(),
+  //         total40: data.slice(-40).reverse(),
+  //         total60: data.slice(-60).reverse(),
+  //         total80: data.slice(-80).reverse(),
+  //         total100: data.slice(-100).reverse(),
+  //       });
+  //     });
+  // }
 
-  updateLogin() {
-    this.setState({
-      login: 'LOGOUT',
-    });
-  }
+  // updateLogin() {
+  //   this.setState({
+  //     login: 'LOGOUT',
+  //   });
+  // }
 
 
   render() {
     let myPage;
     const {
-      topdata, bottomdata, total40, total60, total80, total100, login,
+      topdata, login,
     } = this.state;
-    if (topdata && bottomdata) {
+    if (topdata) {
       const { url } = this.state;
       myPage = (
         <div>
@@ -118,7 +105,7 @@ class App extends React.Component {
               descript={topdata[0].description}
             />
           </div>
-          <div className="ReviewModule">
+          {/* <div className="ReviewModule">
             <Reviews
               star={star}
               blankstar={blankstar}
@@ -130,7 +117,7 @@ class App extends React.Component {
               loginLogout={this.updateLogin}
               url={url}
             />
-          </div>
+          </div> */}
         </div>
       );
     }

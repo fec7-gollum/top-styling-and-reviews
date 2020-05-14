@@ -17,12 +17,19 @@ const Fail = styled.div`
 const MakeAgain = styled.p`
   margin-top: 10vh;
   margin-left: 10vw;
+  font-family: 'Josefin Sans', sans-serif;
 `;
 
-const Labels = styled.label`
+const Labels1 = styled.label`
   padding-top: 1vh;
   padding-bottom: 1vh;
   margin-left: 10vw;
+`;
+
+const Labels2 = styled.label`
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin-left: 3vw;
 `;
 
 const ThumbUp = styled.img`
@@ -93,8 +100,8 @@ const Starclicker5 = styled.div`
 const Modal = styled.div`
   height:100vh;
   width:99vw;
-  background-color: rgb(253, 251, 249);
-  z-index: 2;
+  background-color: white;
+  z-index: 200;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -104,13 +111,15 @@ const Modal = styled.div`
 `;
 
 const PleaseSignUp = styled.div`
-  margin-top: 4vh;
+  margin-top: 2vh;
   position: absolute;
   width: 99vw;
+  margin-left: -2vw;
 `;
 
 const TextA = styled.textarea`
   margin-top: 5vh;
+  height:14vh;
   resize: none;
   padding:1rem;
   width: 48vw;
@@ -149,13 +158,27 @@ const UserMargin = styled.span`
   margin-left: 1vw;
 `;
 
+const NAME = styled.span`
+  margin-left: 1vw;
+  font-weight:800;
+`;
+
+const Location = styled.span`
+  margin-left: 1vw;
+`;
+
+const Date = styled.span`
+  margin-left: 1vw;
+  font-weight: 100;
+`;
+
 const MoreButton = styled.div`
   width:10vw;
   background-color: rgb(228, 228, 253);
   text-align: center;
   padding: 1.4rem;
   margin-top: 5vh;
-  margin-left: 18vw;
+  margin-left: 28vw;
   font-size: 1rem;
   margin-bottom: 20vh;
   &:hover {
@@ -169,33 +192,76 @@ const CenterInput = styled.input`
   padding: 1vh;
   margin-top: .25vh;
   text-align: center;
+  width:18vw;
+  background-color: #F0F8FF;
 `;
 
 const SignIn = styled.input`
-  width:10vw;
+  width: 20vw;
+  color: white;
+  background-color: #1a1a1a;
+  padding: 1vh;
+  cursor: pointer;
 `;
 
 const ReviewTitle = styled.div`
   margin-left:10vw;
   margin-top:10vh;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 800;
 `;
 
 const RateRecipe = styled.p`
   margin-left:10vw;
+  font-family: 'Josefin Sans', sans-serif;
+`;
+
+const ImageStar = styled.img`
+  height: 2vh;
+  margin-left: 4px;
+`;
+
+const StarContainer = styled.div`
+  margin-left: -4px;
+`;
+
+const PageName = styled.p`
+  font-family: monospace;
+  font-weight:900;
+  margin-top: 2vh;
+  font-size: 5rem;
+`;
+
+const SignInForm = styled.p`
+  margin-top: -5vh;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-left: -6vw;
+`;
+
+const REGISTER = styled.a`
+  color: black;
+  margin-top:1vh;
+  margin-left: 1vw;
+`;
+
+const YES = styled.input`
+  margin-left: 1vw;
+`;
+
+const NO = styled.input`
+  margin-left: 1vw;
 `;
 
 class Reviews extends React.Component {
-  constructor({
-    reviewData, total40, total60, total80, total100,
-  }) {
+  constructor() {
     super();
     this.state = {
       click: 0,
-      myData: reviewData || [{ mock: 'mock' }],
-      forty: total40 || [{ mock: 'mock' }],
-      sixty: total60 || [{ mock: 'mock' }],
-      eighty: total80 || [{ mock: 'mock' }],
-      hundred: total100 || [{ mock: 'mock' }],
+      myData: undefined || [{ mock: 'mock' }],
+      total40: undefined || [{ mock: 'mock' }],
+      total60: undefined || [{ mock: 'mock' }],
+      total80: undefined || [{ mock: 'mock' }],
+      total100: undefined || [{ mock: 'mock' }],
       modal: false,
       login: false,
       username: '',
@@ -211,6 +277,7 @@ class Reviews extends React.Component {
       reviewText: '',
       styles: { color: 'black' },
       incorrect: false,
+      url: window.location.pathname,
     };
     this.changeData = this.changeData.bind(this);
     this.handleUsername = this.handleUsername.bind(this);
@@ -218,15 +285,35 @@ class Reviews extends React.Component {
     this.handleReview = this.handleReview.bind(this);
     this.handleSubmission = this.handleSubmission.bind(this);
     this.checkUser = this.checkUser.bind(this);
+    this.getBottom = this.getBottom.bind(this);
+  }
+
+  componentDidMount() {
+    // this.getOne();
+    this.getBottom();
+  }
+
+  getBottom() {
+    const { url } = this.state;
+    axios.get(`http://localhost:4000/reviews${url}`)
+      .then((result) => result.data)
+      .then((data) => {
+        data = data || [];
+        this.setState({
+          myData: data.slice(-20).reverse(),
+          total40: data.slice(-40).reverse(),
+          total60: data.slice(-60).reverse(),
+          total80: data.slice(-80).reverse(),
+          total100: data.slice(-100).reverse(),
+        });
+      });
   }
 
   checkUser() {
     users.forEach((user) => {
       const { username, password } = this.state;
-      const { loginLogout } = this.props;
       if (user.username === username && user.password === password) {
         this.setState({ modal: false, login: true });
-        loginLogout();
       }
     });
     this.setState({ styles: { color: 'red' }, incorrect: true });
@@ -234,29 +321,29 @@ class Reviews extends React.Component {
 
   changeData() {
     const {
-      click, forty, sixty, eighty, hundred,
+      click, total40, total60, total80, total100,
     } = this.state;
     if (click === 0) {
       this.setState({
-        myData: forty,
+        myData: total40,
         click: 1,
       });
     }
     if (click === 1) {
       this.setState({
-        myData: sixty,
+        myData: total60,
         click: 2,
       });
     }
     if (click === 2) {
       this.setState({
-        myData: eighty,
+        myData: total80,
         click: 3,
       });
     }
     if (click === 3) {
       this.setState({
-        myData: hundred,
+        myData: total100,
         click: 4,
       });
     }
@@ -281,30 +368,22 @@ class Reviews extends React.Component {
   }
 
   handleSubmission(sta, txt, nme) {
-    const { url } = this.props;
-<<<<<<< HEAD
+    const { url } = this.state;
     axios.post(`http://localhost:4000/reviews${url}`, {
-=======
-    axios.post(`/reviews${url}`, {
->>>>>>> 80650805701afe27c58afb05fecde01607f78472
       stars: sta,
       text: `${txt}`,
       name: `${nme}`,
     })
       .then(() => {
-<<<<<<< HEAD
         axios.get(`http://localhost:4000/reviews${url}`)
-=======
-        axios.get(`/reviews${url}`)
->>>>>>> 80650805701afe27c58afb05fecde01607f78472
           .then((result) => result.data)
           .then((data) => {
             this.setState({
               myData: data.slice(-20).reverse(),
-              forty: data.slice(-40).reverse(),
-              sixty: data.slice(-60).reverse(),
-              eighty: data.slice(-80).reverse(),
-              hundred: data.slice(-100).reverse(),
+              total40: data.slice(-40).reverse(),
+              total60: data.slice(-60).reverse(),
+              total80: data.slice(-80).reverse(),
+              total100: data.slice(-100).reverse(),
             });
           });
       });
@@ -330,15 +409,15 @@ class Reviews extends React.Component {
         <div>
           <MakeAgain>Would You Make This Again?</MakeAgain>
           <br />
-          <Labels htmlFor="yes">
+          <Labels1 htmlFor="yes">
             YES
-            <input type="radio" id="yes" name="again" onClick={() => { this.setState({ again: 'yes' }); }} />
+            <YES type="radio" id="yes" name="again" onClick={() => { this.setState({ again: 'yes' }); }} />
             <ThumbUp alt="" src={thumbsUp} />
-          </Labels>
-          <Labels htmlFor="no">
+          </Labels1>
+          <Labels2 htmlFor="no">
             NO
-            <input type="radio" id="no" name="again" onClick={() => { this.setState({ again: 'no' }); }} />
-          </Labels>
+            <NO type="radio" id="no" name="again" onClick={() => { this.setState({ again: 'no' }); }} />
+          </Labels2>
           <ThumbDown alt="" src={thumbsUp} />
         </div>
       );
@@ -461,7 +540,8 @@ class Reviews extends React.Component {
         <Modal>
           <form>
             <br />
-            <p>Sign In To Leave A Review</p>
+            <PageName>con appetit</PageName>
+            <SignInForm>Please Login To Your Account</SignInForm>
             <CenterInput
               style={styles}
               type="text"
@@ -498,70 +578,62 @@ class Reviews extends React.Component {
           {loginFail}
           <br />
           <PleaseSignUp>
-            Please signup
-            <a href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.103108807.635364393.1588887829-1653893722.1588887829#"> HERE</a>
-<<<<<<< HEAD
-            {" "}if you need an account
+            Don't have a login?
+            <REGISTER href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.103108807.635364393.1588887829-1653893722.1588887829#"> Register Now</REGISTER>
           </PleaseSignUp>
         </Modal>
-=======
-            {' '}
-            if you need an account
-          </div>
-        </div>
->>>>>>> 80650805701afe27c58afb05fecde01607f78472
       );
     }
     for (let i = 0; i < myData.length; i++) {
       if (myData[i].stars === 1) {
         myData[i].stars = (
-          <div>
-            <img src={star} alt={star} />
-            <img src={blankstar} alt={blankstar} />
-            <img src={blankstar} alt={blankstar} />
-            <img src={blankstar} alt={blankstar} />
-            <img src={blankstar} alt={blankstar} />
-          </div>
+          <StarContainer>
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={blankstar} alt={blankstar} />
+            <ImageStar src={blankstar} alt={blankstar} />
+            <ImageStar src={blankstar} alt={blankstar} />
+            <ImageStar src={blankstar} alt={blankstar} />
+          </StarContainer>
         );
       } else if (myData[i].stars === 2) {
         myData[i].stars = (
-          <div>
-            <img src={star} alt={star} />
-            <img src={star} alt={star} />
-            <img src={blankstar} alt={blankstar} />
-            <img src={blankstar} alt={blankstar} />
-            <img src={blankstar} alt={blankstar} />
-          </div>
+          <StarContainer>
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={blankstar} alt={blankstar} />
+            <ImageStar src={blankstar} alt={blankstar} />
+            <ImageStar src={blankstar} alt={blankstar} />
+          </StarContainer>
         );
       } else if (myData[i].stars === 3) {
         myData[i].stars = (
-          <div>
-            <img src={star} alt={star} />
-            <img src={star} alt={star} />
-            <img src={star} alt={star} />
-            <img src={blankstar} alt={blankstar} />
-            <img src={blankstar} alt={blankstar} />
-          </div>
+          <StarContainer>
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={blankstar} alt={blankstar} />
+            <ImageStar src={blankstar} alt={blankstar} />
+          </StarContainer>
         );
       } else if (myData[i].stars === 4) {
         myData[i].stars = (
-          <div>
-            <img src={star} alt={star} />
-            <img src={star} alt={star} />
-            <img src={star} alt={star} />
-            <img src={star} alt={star} />
-            <img src={blankstar} alt={blankstar} />
-          </div>
+          <StarContainer>
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={blankstar} alt={blankstar} />
+          </StarContainer>
         );
       } else if (myData[i].stars === 5) {
         myData[i].stars = (
-          <div>
-            <img src={star} alt={star} />
-            <img src={star} alt={star} />
-            <img src={star} alt={star} />
-            <img src={star} alt={star} />
-            <img src={star} alt={star} />
-          </div>
+          <StarContainer>
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={star} alt={star} />
+            <ImageStar src={star} alt={star} />
+          </StarContainer>
         );
       }
     }
@@ -572,7 +644,7 @@ class Reviews extends React.Component {
           <ReviewTitle>REVIEWS</ReviewTitle>
           {actualReviewTop}
           <form>
-            <TextA onClick={() => { this.setState({ modal: true, writeReview: writeReview + 1 }); }} rows="8" placeholder="Write a review..." onChange={(e) => this.handleReview(e.target.value)} />
+            <TextA onClick={() => { this.setState((prev) => ({ modal: true, writeReview: prev.writeReview + 1 })); }} placeholder="Write a review..." onChange={(e) => this.handleReview(e.target.value)} />
           </form>
           <br />
           {actualStars}
@@ -591,17 +663,17 @@ class Reviews extends React.Component {
                 </Textreview>
                 <br />
                 <UserInfo>
-                  <span>
+                  <NAME>
                     {review.name}
-                  </span>
+                  </NAME>
                   <UserMargin>  &bull;</UserMargin>
-                  <UserMargin>
+                  <Location>
                     {review.location}
-                  </UserMargin>
+                  </Location>
                   <UserMargin>  &bull;</UserMargin>
-                  <UserMargin>
+                  <Date>
                     {review.date}
-                  </UserMargin>
+                  </Date>
                 </UserInfo>
                 <hr />
               </div>
@@ -616,12 +688,12 @@ class Reviews extends React.Component {
 
 export default Reviews;
 
-Reviews.propTypes = {
-  reviewData: PropTypes.arrayOf(PropTypes.object).isRequired,
-  total40: PropTypes.arrayOf(PropTypes.object).isRequired,
-  total60: PropTypes.arrayOf(PropTypes.object).isRequired,
-  total80: PropTypes.arrayOf(PropTypes.object).isRequired,
-  total100: PropTypes.arrayOf(PropTypes.object).isRequired,
-  loginLogout: PropTypes.func.isRequired,
-  url: PropTypes.string.isRequired,
-};
+// Reviews.propTypes = {
+//   reviewData: PropTypes.arrayOf(PropTypes.object).isRequired,
+//   total40: PropTypes.arrayOf(PropTypes.object).isRequired,
+//   total60: PropTypes.arrayOf(PropTypes.object).isRequired,
+//   total80: PropTypes.arrayOf(PropTypes.object).isRequired,
+//   total100: PropTypes.arrayOf(PropTypes.object).isRequired,
+//   loginLogout: PropTypes.func.isRequired,
+//   url: PropTypes.string.isRequired,
+// };
