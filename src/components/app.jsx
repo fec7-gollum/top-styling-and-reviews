@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 import TopBar from './topbar';
 import Title from './title';
@@ -16,6 +17,7 @@ import printer from '../../public/images/printer.svg';
 import thumbsUp from '../../public/images/thumbs.svg';
 import star from '../../public/images/star.svg';
 import blankstar from '../../public/images/blankstar.svg';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -36,8 +38,6 @@ class App extends React.Component {
     this.updateLogin = this.updateLogin.bind(this);
   }
 
-  // click on login in app... get review modal to pop up... simulate click on text area
-
   componentDidMount() {
     this.getOne();
     this.getBottom();
@@ -45,7 +45,8 @@ class App extends React.Component {
 
   getOne() {
     const { url } = this.state;
-    axios.get(`${url}recipes`)
+    console.log(url);
+    axios.get(`http://localhost:4000/recipes${url}`)
       .then((result) => result.data)
       .then((data) => {
         this.setState({
@@ -56,9 +57,10 @@ class App extends React.Component {
 
   getBottom() {
     const { url } = this.state;
-    axios.get(`${url}reviews`)
+    axios.get(`http://localhost:4000/reviews${url}`)
       .then((result) => result.data)
       .then((data) => {
+        data = data || [];
         this.setState({
           bottomdata: data.slice(-20).reverse(),
           total40: data.slice(-40).reverse(),

@@ -9,7 +9,8 @@
   },
   "scripts": {
     "build:dev": "webpack -d --watch",
-    "seed": "mysql -u root < /Users/justinpaoletta/Desktop/top-styling-and-reviews/db/schema.sql && node db/dbSeeder.js",
+    "generate": "node db/dataGenerator.js",
+    "seed": "node db/dataGenerator.js && mysql -u root < /Users/justinpaoletta/Desktop/top-styling-and-reviews/db/schema.sql && node db/dbSeeder.js",
     "start": "node server/server.js",
     "start:dev": "nodemon server/server.js -w server -w database-mysql2",
     "test": "jest"
@@ -22,6 +23,7 @@
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "css-loader": "^3.5.3",
     "execSync": "^1.0.2",
     "express": "^4.17.1",
@@ -29,6 +31,7 @@
     "file-loader": "^6.0.0",
     "file-system": "^2.2.2",
     "hotkeys-js": "^3.7.6",
+    "http-proxy-middleware": "^1.0.3",
     "jquery": "^3.5.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
@@ -40,6 +43,7 @@
     "react-test-renderer": "^16.13.1",
     "sinon": "^9.0.2",
     "style-loader": "^1.2.1",
+    "styled-components": "^5.1.0",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0"
   },
