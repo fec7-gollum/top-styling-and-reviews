@@ -20,7 +20,7 @@ server.use('/:id', express.static(path.join(__dirname, '/../public/dist')));
 // Server Requests
 server.get('/recipes/:id', (req, res) => {
   const { id } = req.params;
-  const getRecipe = `select * from Recipes, photos where Recipes.recipeID = ${id} && recipes.recipeID = photos.recipeID`;
+  const getRecipe = `select * from Recipes, Photos where Recipes.recipeID = ${id} && Recipes.recipeID = Photos.recipeID`;
   db.connection.query(getRecipe, (error, result) => {
     if (error) console.error(error);
     res.status(200, console.log('got my recipe!')).send(result);
