@@ -8,8 +8,8 @@ db.connection.connect(((err) => {
     console.error(err);
   } else {
     tdata.forEach((cluster) => {
-      const myQuery = `INSERT INTO recipes (recipeID, recipeName, thumbs, makes, description, photoID) VALUES (${cluster.recipeID}, '${cluster.name}', ${cluster.thumbs}, ${cluster.makes}, '${cluster.description}', ${cluster.photo.photoID});`;
-      const myQuery2 = `INSERT INTO photos (photoID, image, photoBy, recipeID) VALUES (${cluster.photo.photoID}, '${cluster.photo.img}', '${cluster.photo.photoBy}', ${cluster.recipeID});`;
+      const myQuery = `INSERT INTO Recipes (recipeID, recipeName, thumbs, makes, description, photoID) VALUES (${cluster.recipeID}, '${cluster.name}', ${cluster.thumbs}, ${cluster.makes}, '${cluster.description}', ${cluster.photo.photoID});`;
+      const myQuery2 = `INSERT INTO Photos (photoID, image, photoBy, recipeID) VALUES (${cluster.photo.photoID}, '${cluster.photo.img}', '${cluster.photo.photoBy}', ${cluster.recipeID});`;
       db.connection.query(myQuery, (error, result) => {
         if (error) return console.error(error);
         return console.log(result);
@@ -21,7 +21,7 @@ db.connection.connect(((err) => {
     });
 
     rdata.forEach((cluster) => {
-      const myQuery3 = `INSERT INTO reviews (reviewID, stars, text, name, location, date, comboID) VALUES (${cluster.reviewID}, ${cluster.stars}, '${cluster.text}', '${cluster.name}', '${cluster.location}', '${cluster.date}', ${cluster.comboID});`;
+      const myQuery3 = `INSERT INTO Reviews (reviewID, stars, text, name, location, date, comboID) VALUES (${cluster.reviewID}, ${cluster.stars}, '${cluster.text}', '${cluster.name}', '${cluster.location}', '${cluster.date}', ${cluster.comboID});`;
       db.connection.query(myQuery3, (error, result) => {
         if (error) return console.error(error);
         return console.log(result);
