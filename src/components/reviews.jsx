@@ -291,7 +291,7 @@ class Reviews extends React.Component {
 
   getBottom() {
     const { url } = this.state;
-    axios.get(`http://localhost:4000/reviews${url}`)
+    axios.get(`/reviews${url}`)
       .then((result) => result.data)
       .then((data) => {
         // eslint-disable-next-line no-param-reassign
@@ -369,13 +369,13 @@ class Reviews extends React.Component {
 
   handleSubmission(sta, txt, nme) {
     const { url } = this.state;
-    axios.post(`http://localhost:4000/reviews${url}`, {
+    axios.post(`/reviews${url}`, {
       stars: sta,
       text: `${txt}`,
       name: `${nme}`,
     })
       .then(() => {
-        axios.get(`http://localhost:4000/reviews${url}`)
+        axios.get(`/reviews${url}`)
           .then((result) => result.data)
           .then((data) => {
             this.setState({
