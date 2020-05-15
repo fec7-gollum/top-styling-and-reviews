@@ -1,9 +1,14 @@
 const path = require('path');
-const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
 
   mode: 'production',
+
+  optimization: {
+    nodeEnv: 'production',
+    minimize: true,
+  },
+
   entry: path.resolve(__dirname, './src/index.jsx'),
 
   output: {
@@ -12,8 +17,6 @@ module.exports = {
   },
 
   resolve: { extensions: ['.js', '.jsx'] },
-
-  plugins: [new CompressionPlugin()],
 
   module: {
     rules: [

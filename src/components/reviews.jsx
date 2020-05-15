@@ -75,22 +75,27 @@ const MyStars = styled.div`
 
 const Starclicker = styled.div`
   margin-left: 1vw;
+  margin-top: 2vh;
 `;
 
 const Starclicker2 = styled.div`
   margin-left: 1vw;
+  margin-top: 2vh;
 `;
 
 const Starclicker3 = styled.div`
   margin-left: 1vw;
+  margin-top: 2vh;
 `;
 
 const Starclicker4 = styled.div`
   margin-left: 1vw;
+  margin-top: 2vh;
 `;
 
 const Starclicker5 = styled.div`
   margin-left: 1vw;
+  margin-top: 2vh;
 `;
 
 const Modal = styled.div`
@@ -212,11 +217,6 @@ const RateRecipe = styled.p`
   font-family: 'Josefin Sans', sans-serif;
 `;
 
-const ImageStar = styled.img`
-  height: 2vh;
-  margin-left: 4px;
-`;
-
 const StarContainer = styled.div`
   margin-left: -4px;
 `;
@@ -263,11 +263,11 @@ class Reviews extends React.Component {
       username: '',
       password: '',
       writeReview: 0,
-      starRate1: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
-      starRate2: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
-      starRate3: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
-      starRate4: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
-      starRate5: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
+      starRate1: <i className="far fa-star" />,
+      starRate2: <i className="far fa-star" />,
+      starRate3: <i className="far fa-star" />,
+      starRate4: <i className="far fa-star" />,
+      starRate5: <i className="far fa-star" />,
       finalRate: 0,
       again: '',
       reviewText: '',
@@ -434,19 +434,18 @@ class Reviews extends React.Component {
 
             onClick={() => {
               this.setState({
-                starRate1: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate2: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
-                starRate3: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
-                starRate4: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
-                starRate5: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
+                starRate1: <i className="fas fa-star" />,
+                starRate2: <i className="far fa-star" />,
+                starRate3: <i className="far fa-star" />,
+                starRate4: <i className="far fa-star" />,
+                starRate5: <i className="far fa-star" />,
                 finalRate: 1,
               });
             }}
           >
-            <img
-              alt=""
-              src={starRate1}
-            />
+
+            {starRate1}
+
           </Starclicker>
           <Starclicker2
             role="button"
@@ -454,19 +453,18 @@ class Reviews extends React.Component {
             onKeyDown
             onClick={() => {
               this.setState({
-                starRate1: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate2: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate3: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
-                starRate4: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
-                starRate5: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
+                starRate1: <i className="fas fa-star" />,
+                starRate2: <i className="fas fa-star" />,
+                starRate3: <i className="far fa-star" />,
+                starRate4: <i className="far fa-star" />,
+                starRate5: <i className="far fa-star" />,
                 finalRate: 2,
               });
             }}
           >
-            <img
-              alt=""
-              src={starRate2}
-            />
+
+            {starRate2}
+
           </Starclicker2>
           <Starclicker3
             role="button"
@@ -474,19 +472,17 @@ class Reviews extends React.Component {
             onKeyDown
             onClick={() => {
               this.setState({
-                starRate1: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate2: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate3: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate4: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
-                starRate5: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
+                starRate1: <i className="fas fa-star" />,
+                starRate2: <i className="fas fa-star" />,
+                starRate3: <i className="fas fa-star" />,
+                starRate4: <i className="far fa-star" />,
+                starRate5: <i className="far fa-star" />,
                 finalRate: 3,
               });
             }}
           >
-            <img
-              alt=""
-              src={starRate3}
-            />
+            {starRate3}
+
           </Starclicker3>
           <Starclicker4
             role="button"
@@ -494,19 +490,17 @@ class Reviews extends React.Component {
             onKeyDown
             onClick={() => {
               this.setState({
-                starRate1: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate2: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate3: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate4: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate5: 'https://myfecphotos.s3.amazonaws.com/blankstar.svg',
+                starRate1: <i className="fas fa-star" />,
+                starRate2: <i className="fas fa-star" />,
+                starRate3: <i className="fas fa-star" />,
+                starRate4: <i className="fas fa-star" />,
+                starRate5: <i className="far fa-star" />,
                 finalRate: 4,
               });
             }}
           >
-            <img
-              alt=""
-              src={starRate4}
-            />
+            {starRate4}
+
           </Starclicker4>
           <Starclicker5
             role="button"
@@ -514,19 +508,17 @@ class Reviews extends React.Component {
             onKeyDown
             onClick={() => {
               this.setState({
-                starRate1: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate2: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate3: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate4: 'https://myfecphotos.s3.amazonaws.com/star.svg',
-                starRate5: 'https://myfecphotos.s3.amazonaws.com/star.svg',
+                starRate1: <i className="fas fa-star" />,
+                starRate2: <i className="fas fa-star" />,
+                starRate3: <i className="fas fa-star" />,
+                starRate4: <i className="fas fa-star" />,
+                starRate5: <i className="fas fa-star" />,
                 finalRate: 5,
               });
             }}
           >
-            <img
-              alt=""
-              src={starRate5}
-            />
+            {starRate5}
+
           </Starclicker5>
         </MyStars>
       );
@@ -585,51 +577,51 @@ class Reviews extends React.Component {
       if (myData[i].stars === 1) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
+            <i className="fas fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
           </StarContainer>
         );
       } else if (myData[i].stars === 2) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
           </StarContainer>
         );
       } else if (myData[i].stars === 3) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
           </StarContainer>
         );
       } else if (myData[i].stars === 4) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="far fa-star" />
           </StarContainer>
         );
       } else if (myData[i].stars === 5) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
-            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
           </StarContainer>
         );
       }
