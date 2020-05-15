@@ -1,9 +1,8 @@
 /* eslint-disable no-plusplus */
 import React from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
-import users from '../../mockUsers';
 import styled from 'styled-components';
+import users from '../../mockUsers';
 
 const Fail = styled.div`
   position: absolute;
@@ -295,6 +294,7 @@ class Reviews extends React.Component {
     axios.get(`http://localhost:4000/reviews${url}`)
       .then((result) => result.data)
       .then((data) => {
+        // eslint-disable-next-line no-param-reassign
         data = data || [];
         this.setState({
           myData: data.slice(-20).reverse(),
@@ -409,18 +409,18 @@ class Reviews extends React.Component {
           <Labels1 htmlFor="yes">
             YES
             <YES type="radio" id="yes" name="again" onClick={() => { this.setState({ again: 'yes' }); }} />
-            <ThumbUp alt="" src={thumbsUp} />
+            <ThumbUp alt="https://myfecphotos.s3.amazonaws.com/thumbs.svg" src="https://myfecphotos.s3.amazonaws.com/thumbs.svg" />
           </Labels1>
           <Labels2 htmlFor="no">
             NO
             <NO type="radio" id="no" name="again" onClick={() => { this.setState({ again: 'no' }); }} />
           </Labels2>
-          <ThumbDown alt="" src={thumbsUp} />
+          <ThumbDown alt="https://myfecphotos.s3.amazonaws.com/thumbs.svg" src="https://myfecphotos.s3.amazonaws.com/thumbs.svg" />
         </div>
       );
       actualReviewBottom = (
         <BottomButtons>
-          <Cancelbtn role="button" tabIndex={0} onKeyDown  onClick={() => { this.setState({ writeReview: 1 }); }}>Cancel</Cancelbtn>
+          <Cancelbtn role="button" tabIndex={0} onKeyDown onClick={() => { this.setState({ writeReview: 1 }); }}>Cancel</Cancelbtn>
           <Savebtn role="button" tabIndex={0} onKeyDown onClick={() => { this.setState({ writeReview: -Infinity }); this.handleSubmission(finalRate, reviewText, username); }}>Save</Savebtn>
         </BottomButtons>
       );
@@ -575,7 +575,7 @@ class Reviews extends React.Component {
           {loginFail}
           <br />
           <PleaseSignUp>
-            Don't have a login?
+            Dont have a login?
             <REGISTER href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.103108807.635364393.1588887829-1653893722.1588887829#"> Register Now</REGISTER>
           </PleaseSignUp>
         </Modal>
@@ -585,51 +585,51 @@ class Reviews extends React.Component {
       if (myData[i].stars === 1) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} alt={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} alt={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} alt={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} alt={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
           </StarContainer>
         );
       } else if (myData[i].stars === 2) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} alt={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} alt={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} alt={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
           </StarContainer>
         );
       } else if (myData[i].stars === 3) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} alt={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} alt={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
           </StarContainer>
         );
       } else if (myData[i].stars === 4) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} alt={'https://myfecphotos.s3.amazonaws.com/blankstar.svg'} />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/blankstar.svg" alt="https://myfecphotos.s3.amazonaws.com/blankstar.svg" />
           </StarContainer>
         );
       } else if (myData[i].stars === 5) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
-            <ImageStar src={'https://myfecphotos.s3.amazonaws.com/star.svg'} alt={'https://myfecphotos.s3.amazonaws.com/star.svg'} />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
+            <ImageStar src="https://myfecphotos.s3.amazonaws.com/star.svg" alt="https://myfecphotos.s3.amazonaws.com/star.svg" />
           </StarContainer>
         );
       }
@@ -684,13 +684,3 @@ class Reviews extends React.Component {
 }
 
 export default Reviews;
-
-// Reviews.propTypes = {
-//   reviewData: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   total40: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   total60: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   total80: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   total100: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   loginLogout: PropTypes.func.isRequired,
-//   url: PropTypes.string.isRequired,
-// };

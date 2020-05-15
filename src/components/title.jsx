@@ -54,17 +54,17 @@ const PhotoCredit = styled.p`
 `;
 
 const Title = ({
-  chef, name, rating, thumbsUp, month, randPhoto, photoBy,
+  name, rating, month, randPhoto, photoBy,
 }) => (
   <TitleSection>
-    <Chef src={'https://myfecphotos.s3.amazonaws.com/chef.svg'} alt={'https://myfecphotos.s3.amazonaws.com/chef.svg'} />
+    <Chef src="https://myfecphotos.s3.amazonaws.com/chef.svg" alt="https://myfecphotos.s3.amazonaws.com/chef.svg" />
     <br />
     <RecipeTitle>{name}</RecipeTitle>
     <Ratings>
       <Percent>
         {rating}
         % would make again
-        <ThumbsUp src={'https://myfecphotos.s3.amazonaws.com/thumbs.svg'} alt={'https://myfecphotos.s3.amazonaws.com/thumbs.svg'} />
+        <ThumbsUp src="https://myfecphotos.s3.amazonaws.com/thumbs.svg" alt="https://myfecphotos.s3.amazonaws.com/thumbs.svg" />
       </Percent>
       <Date>{month}</Date>
     </Ratings>
@@ -77,10 +77,8 @@ const Title = ({
 export default Title;
 
 Title.propTypes = {
-  chef: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
-  thumbsUp: PropTypes.string.isRequired,
   month: PropTypes.string.isRequired,
   randPhoto: PropTypes.string.isRequired,
   photoBy: PropTypes.string.isRequired,
