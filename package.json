@@ -8,7 +8,7 @@
     "node": ">=10.16"
   },
   "scripts": {
-    "build:dev": "webpack -d --watch",
+    "build:dev": "webpack -p --watch",
     "generate": "node db/dataGenerator.js",
     "seed": "node db/dataGenerator.js && mysql -u root < /Users/justinpaoletta/Desktop/top-styling-and-reviews/db/schema.sql && node db/dbSeeder.js",
     "start": "node server/server.js",
