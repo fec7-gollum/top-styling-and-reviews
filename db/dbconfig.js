@@ -6,4 +6,14 @@ const connection = mysql.createConnection({
   database: 'myFEC',
 });
 
+
+connection.connect((err) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log('connected');
+});
+
+
 module.exports.connection = connection;
