@@ -32,6 +32,9 @@ class App extends React.Component {
         this.setState({
           topdata: data,
         });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 

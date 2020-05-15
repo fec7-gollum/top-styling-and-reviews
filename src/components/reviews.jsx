@@ -303,6 +303,9 @@ class Reviews extends React.Component {
           total80: data.slice(-80).reverse(),
           total100: data.slice(-100).reverse(),
         });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 
@@ -383,6 +386,9 @@ class Reviews extends React.Component {
               total100: data.slice(-100).reverse(),
             });
           });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 
