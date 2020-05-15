@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
-import x from '../../public/images/x.jpg';
 import styled from 'styled-components';
 
 const TopRow = styled.div`
@@ -158,7 +157,7 @@ class TopBar extends React.Component {
     if (textArea) {
       mySearch = (
         <SearchModal>
-          <Closemodal role="button" tabIndex={0} onKeyPress={() => {}} onClick={() => { this.setState({ textArea: false }); }}><CloseX alt="true" src={x} /></Closemodal>
+          <Closemodal role="button" tabIndex={0} onKeyPress={() => {}} onClick={() => { this.setState({ textArea: false }); }}><CloseX alt="true" src={'https://myfecphotos.s3.amazonaws.com/x.jpg'} /></Closemodal>
           <Searching placeholder="Search Recipes..." onChange={(e) => this.handleSearch(e.target.value)} />
           <br />
           <Findit href={fullsearch}>Find It</Findit>
@@ -167,7 +166,7 @@ class TopBar extends React.Component {
     }
     return (
       <TopRow>
-        <TopIcons src={menu} alt={menu} />
+        <TopIcons src={'https://myfecphotos.s3.amazonaws.com/menu.svg'} alt={'https://myfecphotos.s3.amazonaws.com/menu.svg'} />
         <Foodie>FOODIE
         <Eyes alt="true" src="https://img.pngio.com/dot-png-images-free-download-black-dot-png-3500_3500.png" />
         <Eyes2 alt="true" src="https://img.pngio.com/dot-png-images-free-download-black-dot-png-3500_3500.png" />
@@ -175,7 +174,7 @@ class TopBar extends React.Component {
         <Right>
           <Recipes href="https://www.bonRecipesppetit.com/recipes">RECIPES</Recipes>
           <Login href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.195360363.635364393.1588887829-1653893722.1588887829" className="login">{login}</Login>
-          <div role="button" tabIndex={0} onKeyPress={() => {}} onClick={() => { this.setState({ textArea: true }); }}><Search src={search} alt={search} /></div>
+          <div role="button" tabIndex={0} onKeyPress={() => {}} onClick={() => { this.setState({ textArea: true }); }}><Search src={'https://myfecphotos.s3.amazonaws.com/search.svg'} alt={'https://myfecphotos.s3.amazonaws.com/search.svg'} /></div>
           {mySearch}
         </Right>
       </TopRow>

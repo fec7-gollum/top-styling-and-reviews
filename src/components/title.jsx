@@ -57,14 +57,14 @@ const Title = ({
   chef, name, rating, thumbsUp, month, randPhoto, photoBy,
 }) => (
   <TitleSection>
-    <Chef src={chef} alt={chef} />
+    <Chef src={'https://myfecphotos.s3.amazonaws.com/chef.svg'} alt={'https://myfecphotos.s3.amazonaws.com/chef.svg'} />
     <br />
     <RecipeTitle>{name}</RecipeTitle>
     <Ratings>
       <Percent>
         {rating}
         % would make again
-        <ThumbsUp src={thumbsUp} alt={thumbsUp} />
+        <ThumbsUp src={'https://myfecphotos.s3.amazonaws.com/thumbs.svg'} alt={'https://myfecphotos.s3.amazonaws.com/thumbs.svg'} />
       </Percent>
       <Date>{month}</Date>
     </Ratings>

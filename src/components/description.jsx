@@ -59,13 +59,13 @@ const Description = ({
 }) => (
   <DescriptionSection>
     <Social>
-      <a href="https://www.facebook.com/"><SocialImg src={fb} alt={fb} /></a>
+      <a href="https://www.facebook.com/"><SocialImg src={'https://myfecphotos.s3.amazonaws.com/facebook.svg'} alt={'https://myfecphotos.s3.amazonaws.com/facebook.svg'} /></a>
       <br />
-      <a href="https://www.pinterest.com/"><SocialImg src={pin} alt={pin} /></a>
+      <a href="https://www.pinterest.com/"><SocialImg src={'https://myfecphotos.s3.amazonaws.com/pinterest.svg'} alt={'https://myfecphotos.s3.amazonaws.com/pinterest.svg'} /></a>
       <br />
-      <a href="https://twitter.com/explore"><SocialImg src={twitter} alt={twitter} /></a>
+      <a href="https://twitter.com/explore"><SocialImg src={'https://myfecphotos.s3.amazonaws.com/twitter.svg'} alt={'https://myfecphotos.s3.amazonaws.com/twitter.svg'} /></a>
       <br />
-      <a href="mailto:?subject=Check Out This Recipe!&body=This looks SO GOOD and I thought you might like it https://www.bonappetit.com/recipe/cinnamon-date-sticky-buns"><SocialImg src={email} alt={email} /></a>
+      <a href="mailto:?subject=Check Out This Recipe!&body=This looks SO GOOD and I thought you might like it https://www.bonappetit.com/recipe/cinnamon-date-sticky-buns"><SocialImg src={'https://myfecphotos.s3.amazonaws.com/email.svg'} alt={'https://myfecphotos.s3.amazonaws.com/email.svg'} /></a>
     </Social>
     <BriefDescription>
       <MakesNum>
@@ -75,7 +75,7 @@ const Description = ({
       <SmallText>{descript}</SmallText>
     </BriefDescription>
     <PrintSection role="button" tabIndex={0} onKeyPress={() => {}} onClick={() => { window.print(); return false; }}>
-      <Print src={print} alt={print} />
+      <Print src={'https://myfecphotos.s3.amazonaws.com/printer.svg'} alt={'https://myfecphotos.s3.amazonaws.com/printer.svg'} />
       <PrintText>PRINT</PrintText>
     </PrintSection>
   </DescriptionSection>
