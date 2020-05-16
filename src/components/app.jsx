@@ -1,7 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
-
 import TopBar from './topbar';
 import Title from './title';
 import Description from './description';
@@ -25,7 +23,6 @@ class App extends React.Component {
 
   getOne() {
     const { url } = this.state;
-    console.log(url);
     axios.get(`/recipes${url}`)
       .then((result) => result.data)
       .then((data) => {
@@ -34,6 +31,7 @@ class App extends React.Component {
         });
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.log(error);
       });
   }
@@ -45,7 +43,6 @@ class App extends React.Component {
       topdata, login,
     } = this.state;
     if (topdata) {
-      const { url } = this.state;
       myPage = (
         <div>
           <div className="TopModule">

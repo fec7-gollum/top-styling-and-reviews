@@ -305,6 +305,7 @@ class Reviews extends React.Component {
         });
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.log(error);
       });
   }
@@ -388,6 +389,7 @@ class Reviews extends React.Component {
           });
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.log(error);
       });
   }

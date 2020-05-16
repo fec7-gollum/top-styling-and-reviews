@@ -150,7 +150,7 @@ class TopBar extends React.Component {
   }
 
   render() {
-    const { menu, search, login } = this.props;
+    const { login } = this.props;
     const { textArea, searchterm } = this.state;
     const fullsearch = `https://www.bonappetit.com/search?q=${searchterm}`;
     let mySearch;
@@ -186,7 +186,5 @@ class TopBar extends React.Component {
 export default TopBar;
 
 TopBar.propTypes = {
-  menu: PropTypes.string.isRequired,
-  search: PropTypes.string.isRequired,
   login: PropTypes.string.isRequired,
 };
