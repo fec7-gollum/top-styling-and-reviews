@@ -1,9 +1,9 @@
+/* eslint-disable no-console */
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'justin',
-  password: 'codecode',
+  user: 'root',
   database: 'myFEC',
 });
 

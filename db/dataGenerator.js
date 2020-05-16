@@ -27,7 +27,7 @@ while (top <= 100) {
   {
     "recipeID": ${top},
     "name": "${faker.random.words()}",
-    "thumbs": ${faker.random.number({ min: 54, max: 100 })},
+    "thumbs": ${Math.ceil(Math.random() * Math.ceil(99))},
     "makes": ${makeArr[faker.random.number({ min: 0, max: 4 })]},
     "description": "${faker.lorem.paragraph()}. ${faker.lorem.paragraph()}. ${faker.lorem.paragraph()}.",
     "photo": {

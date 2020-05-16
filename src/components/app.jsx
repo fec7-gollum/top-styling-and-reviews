@@ -23,7 +23,7 @@ class App extends React.Component {
 
   getOne() {
     const { url } = this.state;
-    axios.get(`/recipes${url}`)
+    axios.get(`http://3.23.17.183:4000/recipes${url}`)
       .then((result) => result.data)
       .then((data) => {
         this.setState({
