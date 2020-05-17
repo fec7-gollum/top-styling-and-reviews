@@ -1,12 +1,8 @@
 /* eslint-disable no-plusplus */
 import React from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
-import thumbsUp from '../../public/images/thumbs.svg';
-import blankstar from '../../public/images/blankstar.svg';
-import star from '../../public/images/star.svg';
-import users from '../../mockUsers';
 import styled from 'styled-components';
+import users from '../../mockUsers';
 
 const Fail = styled.div`
   position: absolute;
@@ -79,22 +75,27 @@ const MyStars = styled.div`
 
 const Starclicker = styled.div`
   margin-left: 1vw;
+  margin-top: 2vh;
 `;
 
 const Starclicker2 = styled.div`
   margin-left: 1vw;
+  margin-top: 2vh;
 `;
 
 const Starclicker3 = styled.div`
   margin-left: 1vw;
+  margin-top: 2vh;
 `;
 
 const Starclicker4 = styled.div`
   margin-left: 1vw;
+  margin-top: 2vh;
 `;
 
 const Starclicker5 = styled.div`
   margin-left: 1vw;
+  margin-top: 2vh;
 `;
 
 const Modal = styled.div`
@@ -216,11 +217,6 @@ const RateRecipe = styled.p`
   font-family: 'Josefin Sans', sans-serif;
 `;
 
-const ImageStar = styled.img`
-  height: 2vh;
-  margin-left: 4px;
-`;
-
 const StarContainer = styled.div`
   margin-left: -4px;
 `;
@@ -267,11 +263,11 @@ class Reviews extends React.Component {
       username: '',
       password: '',
       writeReview: 0,
-      starRate1: blankstar,
-      starRate2: blankstar,
-      starRate3: blankstar,
-      starRate4: blankstar,
-      starRate5: blankstar,
+      starRate1: <i className="far fa-star" />,
+      starRate2: <i className="far fa-star" />,
+      starRate3: <i className="far fa-star" />,
+      starRate4: <i className="far fa-star" />,
+      starRate5: <i className="far fa-star" />,
       finalRate: 0,
       again: '',
       reviewText: '',
@@ -295,9 +291,10 @@ class Reviews extends React.Component {
 
   getBottom() {
     const { url } = this.state;
-    axios.get(`http://localhost:4000/reviews${url}`)
+    axios.get(`http://3.23.17.183:4000/reviews${url}`)
       .then((result) => result.data)
       .then((data) => {
+        // eslint-disable-next-line no-param-reassign
         data = data || [];
         this.setState({
           myData: data.slice(-20).reverse(),
@@ -306,6 +303,10 @@ class Reviews extends React.Component {
           total80: data.slice(-80).reverse(),
           total100: data.slice(-100).reverse(),
         });
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
       });
   }
 
@@ -369,13 +370,13 @@ class Reviews extends React.Component {
 
   handleSubmission(sta, txt, nme) {
     const { url } = this.state;
-    axios.post(`http://localhost:4000/reviews${url}`, {
+    axios.post(`http://3.23.17.183:4000/reviews${url}`, {
       stars: sta,
       text: `${txt}`,
       name: `${nme}`,
     })
       .then(() => {
-        axios.get(`http://localhost:4000/reviews${url}`)
+        axios.get(`http://3.23.17.183:4000/reviews${url}`)
           .then((result) => result.data)
           .then((data) => {
             this.setState({
@@ -386,6 +387,10 @@ class Reviews extends React.Component {
               total100: data.slice(-100).reverse(),
             });
           });
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
       });
   }
 
@@ -412,18 +417,18 @@ class Reviews extends React.Component {
           <Labels1 htmlFor="yes">
             YES
             <YES type="radio" id="yes" name="again" onClick={() => { this.setState({ again: 'yes' }); }} />
-            <ThumbUp alt="" src={thumbsUp} />
+            <ThumbUp alt="https://myfecphotos.s3.amazonaws.com/thumbs.svg" src="https://myfecphotos.s3.amazonaws.com/thumbs.svg" />
           </Labels1>
           <Labels2 htmlFor="no">
             NO
             <NO type="radio" id="no" name="again" onClick={() => { this.setState({ again: 'no' }); }} />
           </Labels2>
-          <ThumbDown alt="" src={thumbsUp} />
+          <ThumbDown alt="https://myfecphotos.s3.amazonaws.com/thumbs.svg" src="https://myfecphotos.s3.amazonaws.com/thumbs.svg" />
         </div>
       );
       actualReviewBottom = (
         <BottomButtons>
-          <Cancelbtn role="button" tabIndex={0} onKeyDown  onClick={() => { this.setState({ writeReview: 1 }); }}>Cancel</Cancelbtn>
+          <Cancelbtn role="button" tabIndex={0} onKeyDown onClick={() => { this.setState({ writeReview: 1 }); }}>Cancel</Cancelbtn>
           <Savebtn role="button" tabIndex={0} onKeyDown onClick={() => { this.setState({ writeReview: -Infinity }); this.handleSubmission(finalRate, reviewText, username); }}>Save</Savebtn>
         </BottomButtons>
       );
@@ -437,19 +442,18 @@ class Reviews extends React.Component {
 
             onClick={() => {
               this.setState({
-                starRate1: star,
-                starRate2: blankstar,
-                starRate3: blankstar,
-                starRate4: blankstar,
-                starRate5: blankstar,
+                starRate1: <i className="fas fa-star" />,
+                starRate2: <i className="far fa-star" />,
+                starRate3: <i className="far fa-star" />,
+                starRate4: <i className="far fa-star" />,
+                starRate5: <i className="far fa-star" />,
                 finalRate: 1,
               });
             }}
           >
-            <img
-              alt=""
-              src={starRate1}
-            />
+
+            {starRate1}
+
           </Starclicker>
           <Starclicker2
             role="button"
@@ -457,19 +461,18 @@ class Reviews extends React.Component {
             onKeyDown
             onClick={() => {
               this.setState({
-                starRate1: star,
-                starRate2: star,
-                starRate3: blankstar,
-                starRate4: blankstar,
-                starRate5: blankstar,
+                starRate1: <i className="fas fa-star" />,
+                starRate2: <i className="fas fa-star" />,
+                starRate3: <i className="far fa-star" />,
+                starRate4: <i className="far fa-star" />,
+                starRate5: <i className="far fa-star" />,
                 finalRate: 2,
               });
             }}
           >
-            <img
-              alt=""
-              src={starRate2}
-            />
+
+            {starRate2}
+
           </Starclicker2>
           <Starclicker3
             role="button"
@@ -477,19 +480,17 @@ class Reviews extends React.Component {
             onKeyDown
             onClick={() => {
               this.setState({
-                starRate1: star,
-                starRate2: star,
-                starRate3: star,
-                starRate4: blankstar,
-                starRate5: blankstar,
+                starRate1: <i className="fas fa-star" />,
+                starRate2: <i className="fas fa-star" />,
+                starRate3: <i className="fas fa-star" />,
+                starRate4: <i className="far fa-star" />,
+                starRate5: <i className="far fa-star" />,
                 finalRate: 3,
               });
             }}
           >
-            <img
-              alt=""
-              src={starRate3}
-            />
+            {starRate3}
+
           </Starclicker3>
           <Starclicker4
             role="button"
@@ -497,19 +498,17 @@ class Reviews extends React.Component {
             onKeyDown
             onClick={() => {
               this.setState({
-                starRate1: star,
-                starRate2: star,
-                starRate3: star,
-                starRate4: star,
-                starRate5: blankstar,
+                starRate1: <i className="fas fa-star" />,
+                starRate2: <i className="fas fa-star" />,
+                starRate3: <i className="fas fa-star" />,
+                starRate4: <i className="fas fa-star" />,
+                starRate5: <i className="far fa-star" />,
                 finalRate: 4,
               });
             }}
           >
-            <img
-              alt=""
-              src={starRate4}
-            />
+            {starRate4}
+
           </Starclicker4>
           <Starclicker5
             role="button"
@@ -517,19 +516,17 @@ class Reviews extends React.Component {
             onKeyDown
             onClick={() => {
               this.setState({
-                starRate1: star,
-                starRate2: star,
-                starRate3: star,
-                starRate4: star,
-                starRate5: star,
+                starRate1: <i className="fas fa-star" />,
+                starRate2: <i className="fas fa-star" />,
+                starRate3: <i className="fas fa-star" />,
+                starRate4: <i className="fas fa-star" />,
+                starRate5: <i className="fas fa-star" />,
                 finalRate: 5,
               });
             }}
           >
-            <img
-              alt=""
-              src={starRate5}
-            />
+            {starRate5}
+
           </Starclicker5>
         </MyStars>
       );
@@ -578,7 +575,7 @@ class Reviews extends React.Component {
           {loginFail}
           <br />
           <PleaseSignUp>
-            Don't have a login?
+            Dont have a login?
             <REGISTER href="https://account.bonappetit.com/?brandSlug=bon-appetit&redirectUrl=https://www.bonappetit.com/&_ga=2.103108807.635364393.1588887829-1653893722.1588887829#"> Register Now</REGISTER>
           </PleaseSignUp>
         </Modal>
@@ -588,51 +585,51 @@ class Reviews extends React.Component {
       if (myData[i].stars === 1) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={blankstar} alt={blankstar} />
-            <ImageStar src={blankstar} alt={blankstar} />
-            <ImageStar src={blankstar} alt={blankstar} />
-            <ImageStar src={blankstar} alt={blankstar} />
+            <i className="fas fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
           </StarContainer>
         );
       } else if (myData[i].stars === 2) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={blankstar} alt={blankstar} />
-            <ImageStar src={blankstar} alt={blankstar} />
-            <ImageStar src={blankstar} alt={blankstar} />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
           </StarContainer>
         );
       } else if (myData[i].stars === 3) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={blankstar} alt={blankstar} />
-            <ImageStar src={blankstar} alt={blankstar} />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
           </StarContainer>
         );
       } else if (myData[i].stars === 4) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={blankstar} alt={blankstar} />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="far fa-star" />
           </StarContainer>
         );
       } else if (myData[i].stars === 5) {
         myData[i].stars = (
           <StarContainer>
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={star} alt={star} />
-            <ImageStar src={star} alt={star} />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
+            <i className="fas fa-star" />
           </StarContainer>
         );
       }
@@ -687,13 +684,3 @@ class Reviews extends React.Component {
 }
 
 export default Reviews;
-
-// Reviews.propTypes = {
-//   reviewData: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   total40: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   total60: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   total80: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   total100: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   loginLogout: PropTypes.func.isRequired,
-//   url: PropTypes.string.isRequired,
-// };
