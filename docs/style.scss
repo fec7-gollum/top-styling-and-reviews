@@ -1,0 +1,51 @@
+$primary-color: #CD6799;
+$secondary-color: rgb(84, 92, 99);
+
+body {
+  background-color: $secondary-color;
+}
+
+div {
+  width: 60vw;
+  margin-left: 16vw;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  padding: 2.2rem;
+  background-color: white;
+  border: 1px solid $primary-color;
+}
+
+h1 {
+  color:$primary-color;
+}
+
+h2 {
+  color:$primary-color;
+}
+
+h3 {
+  color:$secondary-color;
+}
+
+ul {
+  list-style-type: square;
+  li {
+    font-family: cursive;
+  }
+  a {
+    font-family: monospace;
+    margin-left: 2vw;
+  }
+}
+
+@mixin textstyles($property) {
+  font-family: $property;
+  color: blue;
+}
+
+ol {
+  @include textstyles(monospace);
+  li {
+    color: $primary-color;
+  }
+}

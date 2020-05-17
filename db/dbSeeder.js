@@ -27,5 +27,6 @@ db.connection.connect(((err) => {
         return console.log(result);
       });
     });
+    db.connection.end();
   }
 }));

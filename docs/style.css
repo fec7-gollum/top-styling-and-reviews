@@ -1,0 +1,46 @@
+body {
+  background-color: #545c63;
+}
+
+div {
+  width: 60vw;
+  margin-left: 16vw;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  padding: 2.2rem;
+  background-color: white;
+  border: 1px solid #CD6799;
+}
+
+h1 {
+  color: #CD6799;
+}
+
+h2 {
+  color: #CD6799;
+}
+
+h3 {
+  color: #545c63;
+}
+
+ul {
+  list-style-type: square;
+}
+ul li {
+  font-family: cursive;
+}
+ul a {
+  font-family: monospace;
+  margin-left: 2vw;
+}
+
+ol {
+  font-family: monospace;
+  color: blue;
+}
+ol li {
+  color: #CD6799;
+}
+
+/*# sourceMappingURL=style.css.map */
